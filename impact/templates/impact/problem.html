@@ -1,0 +1,69 @@
+{% extends "impact/base.html" %}
+{% load static %}
+
+{% block title %}The Problem | Fast Fashion Cleanup{% endblock %}
+
+{% block content %}
+
+<section class="section">
+    <div class="section-inner">
+        <h1 class="section-heading">The Problem</h1>
+
+        <p class="section-text">
+            Fast fashion depends on low-cost fibers that require large amounts of water, energy,
+            and chemicals. Below you'll find headline statistics drawn from public reports, plus
+            charts that put the scale of the problem into context.
+        </p>
+    </div>
+</section>
+
+<section class="section alt">
+    <div class="section-inner">
+        <h2 class="subheading">Headline numbers</h2>
+        <p class="section-text">
+            These values are rounded estimates. They are meant to show scale, not exact predictions
+            for every brand or garment.
+        </p>
+
+        <div class="stats-grid">
+            {% for stat in stats %}
+            <article class="stat-card">
+                <p class="stat-title">{{ stat.title }}</p>
+                <p class="stat-value">{{ stat.value }} {{ stat.unit }}</p>
+                <p class="stat-desc">{{ stat.description }}</p>
+                {% if stat.source %}
+                    <p class="stat-source">Source: {{ stat.source }}</p>
+                {% endif %}
+            </article>
+            {% empty %}
+            <p>No stats added yet. Use the admin site to create a few headline values.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-inner">
+        <h2 class="subheading">Visual 1: Material comparison</h2>
+        <p class="section-text">
+            A simple chart comparing environmental impact by material (for example, liters of water
+            used per kilogram of fiber).
+        </p>
+        <img src="{% static 'impact/chart_materials.png' %}" class="chart-img"
+             alt="Chart comparing environmental impact by material">
+    </div>
+</section>
+
+<section class="section alt">
+    <div class="section-inner">
+        <h2 class="subheading">Visual 2: Before vs. fast fashion era</h2>
+        <p class="section-text">
+            A before/after view showing how textile waste or production has changed from an earlier
+            baseline to the fast fashion era.
+        </p>
+        <img src="{% static 'impact/chart_before_after.png' %}" class="chart-img"
+             alt="Before and after chart for textile waste or production">
+    </div>
+</section>
+
+{% endblock %}

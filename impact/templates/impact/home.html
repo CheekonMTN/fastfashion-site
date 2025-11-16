@@ -1,0 +1,81 @@
+{% extends "impact/base.html" %}
+
+{% block title %}Fast Fashion Cleanup{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <p class="hero-tagline">A growing environmental cost</p>
+
+            <h1 class="hero-title">Fast fashion, slow environment</h1>
+
+            <p class="hero-subtext">
+                The fashion industry produces billions of garments every year—
+                many made from water-intensive or fossil-fuel-based fibers.
+                This site gives a clean, simple look at the impact.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="{% url 'problem' %}" class="btn primary">Explore the data</a>
+                <a href="{% url 'solutions' %}" class="btn secondary">What you can do</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <p class="hero-card-label">Guiding Question</p>
+            <p class="hero-card-text">
+                How do fast fashion materials contribute to environmental impact,
+                and what realistic actions can individuals take?
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- STRIP SECTION -->
+<section class="strip">
+    <div class="strip-inner">
+        <h2 class="strip-title">A global industry, a global footprint</h2>
+        <p class="strip-text">
+            Cotton, polyester, viscose—fast fashion relies on materials with heavy resource demands.
+            From water use to textile waste, this overview highlights the scale of the issue.
+        </p>
+    </div>
+</section>
+
+<!-- INFO CARDS -->
+<section class="section">
+    <div class="section-inner">
+        <h2 class="section-heading">What you'll find here</h2>
+
+        <div class="card-grid three">
+            <div class="info-card">
+                <h3>Key statistics</h3>
+                <p>
+                    A small set of headline numbers showing water use, emissions, and textile waste
+                    by common fashion materials.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Two clear visuals</h3>
+                <p>
+                    Simple charts comparing fibers and showing how waste and production changed
+                    over time.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Practical solutions</h3>
+                <p>
+                    Realistic, affordable actions for students and communities—plus a fairness
+                    and ethics note.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
