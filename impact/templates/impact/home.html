@@ -1,6 +1,8 @@
 {% extends "impact/base.html" %}
 
-{% block title %}Fast Fashion Cleanup{% endblock %}
+{% load static %}
+
+{% block title %}Fast Fashion big booty{% endblock %}
 
 {% block content %}
 
@@ -8,29 +10,36 @@
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-text">
-            <p class="hero-tagline">A growing environmental cost</p>
-
-            <h1 class="hero-title">Fast fashion, slow environment</h1>
+            <p class="hero-tagline">Fast fashion’s hidden environmental cost</p>
+            <h1 class="hero-title">
+                A clear, data-driven look at how fast fashion impacts water, waste, and the planet.
+            </h1>
 
             <p class="hero-subtext">
-                The fashion industry produces billions of garments every year—
-                many made from water-intensive or fossil-fuel-based fibers.
-                This site gives a clean, simple look at the impact.
+                Every year, the fashion industry produces over 100 billion garments — relying heavily on 
+                water-intensive farming, fossil-fuel-based fibers, and rapid production cycles that generate 
+                massive waste. This project turns those impacts into clear, visual numbers so you can see 
+                what’s happening behind the clothes we buy.
             </p>
 
             <div class="hero-buttons">
-                <a href="{% url 'problem' %}" class="btn primary">Explore the data</a>
-                <a href="{% url 'solutions' %}" class="btn secondary">What you can do</a>
+                <a href="{% url 'problem' %}#headline" class="btn primary">Explore the data</a>
+                <a href="{% url 'solutions' %}" class="btn ghost">What you can do</a>
             </div>
         </div>
 
-        <div class="hero-card">
-            <p class="hero-card-label">Guiding Question</p>
-            <p class="hero-card-text">
-                How do fast fashion materials contribute to environmental impact,
-                and what realistic actions can individuals take?
-            </p>
-        </div>
+        <aside class="hero-visual">
+            <div class="hero-image-shell">
+                <img src="{% static 'impact/imgs/clothes-on-rack2.jpg' %}"
+                     alt="Clothing rack with garments"
+                     class="hero-image">
+
+                <div class="hero-stat-pill">
+                    <span class="hero-stat-label">Water per cotton t-shirt</span>
+                    <span class="hero-stat-value">2,700 L</span>
+                </div>
+            </div>
+        </aside>
     </div>
 </section>
 
@@ -41,6 +50,55 @@
         <p class="strip-text">
             Cotton, polyester, viscose—fast fashion relies on materials with heavy resource demands.
             From water use to textile waste, this overview highlights the scale of the issue.
+        </p>
+    </div>
+</section>
+
+<section class="live-water-section">
+    <div class="live-water-inner">
+        <h2 class="live-water-title">Live Water Use · Fashion Industry</h2>
+        <p class="live-water-sub">Updated every second</p>
+
+        <div class="live-water-grid">
+            <!-- Card 1: liters -->
+            <article class="live-water-card">
+                <p class="live-water-label">Liters used this year</p>
+                <p class="live-water-value">
+                    <span id="waterYearLitersDisplay">0</span>
+                </p>
+                <p class="live-water-note">Total water flowing through the fashion & textile system.</p>
+            </article>
+
+            <!-- Card 2: bathtubs -->
+            <article class="live-water-card">
+                <p class="live-water-label">Bathtubs of water</p>
+                <p class="live-water-value">
+                    <span id="waterYearBathtubsDisplay">0</span>
+                </p>
+                <p class="live-water-note">Assuming ~150 liters per full bathtub.</p>
+            </article>
+
+            <!-- Card 3: 1-L bottles -->
+            <article class="live-water-card">
+                <p class="live-water-label">1-L bottles</p>
+                <p class="live-water-value">
+                    <span id="waterYearBottlesDisplay">0.0</span> B
+                </p>
+                <div class="live-water-bottles-row">
+                    <div class="live-water-bottle-icons">
+                        <div class="live-bottle"></div>
+                        <div class="live-bottle"></div>
+                        <div class="live-bottle"></div>
+                    </div>
+                    <p class="live-water-note">Visualized as single-liter water bottles.</p>
+                </div>
+            </article>
+        </div>
+
+        <p class="live-water-footnote">
+            Based on global textile industry estimates (≈93 billion cubic meters annually).
+            This counter converts that to liters per second and multiplies by the time since
+            January 1st. It illustrates scale rather than providing an exact real-time reading.
         </p>
     </div>
 </section>
