@@ -584,7 +584,8 @@ body {
 }
 
 .live-water-inner {
-    max-width: 900px;
+    width: 100%;
+    max-width: 2000px;
     margin: 0 auto;
     background:
         radial-gradient(circle at top left, #d2f5e3 0, rgba(210, 245, 227, 0.1) 45%),
@@ -694,6 +695,34 @@ body {
     font-size: 0.82rem;
     color: #6b7280;
 }
+/* === HERO BACKGROUND VIDEO === */
+
+.video-hero {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.10)
+    );
+    pointer-events: none;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

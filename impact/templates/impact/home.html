@@ -6,39 +6,56 @@
 
 {% block content %}
 
-<!-- HERO SECTION -->
-<section class="hero">
-    <div class="hero-inner">
+<section class="hero hero-video">
+    <!-- Background video -->
+    <div class="hero-video-bg">
+        <video
+            class="hero-video-tag"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="{% static 'impact/imgs/clothes-on-rack2.jpg' %}">
+            <source src="{% static 'impact/videos/beach-background.mp4' %}" type="video/mp4">
+            <!-- Fallback text -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+<section class="hero hero-overlay">
+    <div class="hero-inner hero-overlay-inner">
         <div class="hero-text">
             <p class="hero-tagline">Fast fashion’s hidden environmental cost</p>
+
             <h1 class="hero-title">
-                A clear, data-driven look at how fast fashion impacts water, waste, and the planet.
+                A clear, data-driven look at how fast fashion impacts water,
+                waste, and the planet.
             </h1>
 
             <p class="hero-subtext">
-                Every year, the fashion industry produces over 100 billion garments — relying heavily on 
-                water-intensive farming, fossil-fuel-based fibers, and rapid production cycles that generate 
-                massive waste. This project turns those impacts into clear, visual numbers so you can see 
-                what’s happening behind the clothes we buy.
+                Every year, the fashion industry produces over 100 billion garments —
+                relying heavily on water-intensive farming, fossil-fuel-based fibers,
+                and rapid production cycles that generate massive waste. This project
+                turns those impacts into clear, visual numbers so you can see what’s
+                happening behind the clothes we buy.
             </p>
 
             <div class="hero-buttons">
-                <a href="{% url 'problem' %}#headline" class="btn primary">Explore the data</a>
-                <a href="{% url 'solutions' %}" class="btn ghost">What you can do</a>
+                <a href="{% url 'problem' %}#headline" class="btn primary">
+                    Explore the data
+                </a>
+                <a href="{% url 'solutions' %}" class="btn ghost">
+                    What you can do
+                </a>
             </div>
         </div>
 
-        <aside class="hero-visual">
-            <div class="hero-image-shell">
-                <img src="{% static 'impact/imgs/clothes-on-rack2.jpg' %}"
-                     alt="Clothing rack with garments"
-                     class="hero-image">
-
-                <div class="hero-stat-pill">
-                    <span class="hero-stat-label">Water per cotton t-shirt</span>
-                    <span class="hero-stat-value">2,700 L</span>
-                </div>
-            </div>
+        <aside class="hero-card hero-overlay-card">
+            <p class="hero-card-label">Guiding question</p>
+            <p class="hero-card-text">
+                How do fast fashion materials contribute to environmental impact,
+                and what realistic actions can individuals take?
+            </p>
         </aside>
     </div>
 </section>
