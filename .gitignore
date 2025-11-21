@@ -1,1 +1,78 @@
 impact/static/impact/videos/
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.so
+*.egg-info/
+dist/
+build/
+
+# === DJANGO ===
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+static/
+.env
+.env.*
+.env.local
+*.env
+
+# Django secret keys / settings overrides
+settings_local.py
+local_settings.py
+
+# === VIRTUAL ENVIRONMENTS ===
+venv/
+env/
+.venv/
+ENV/
+
+# === MACOS ===
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# === VS CODE ===
+.vscode/
+.code-workspace
+
+# === PYCHARM ===
+.idea/
+*.iml
+
+# === NODE / FRONTEND ===
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnp/
+.pnp.js
+
+# === OTHER ARTIFACTS ===
+# Byte-compiled / optimized / DLL files
+*.dll
+*.o
+*.a
+*.out
+
+# Backup files
+*~
+*.bak
+*.swp
+*.tmp
+
+# JetBrains
+.idea/
+
+# === OS / EDITOR ===
+Thumbs.db
+ehthumbs.db
