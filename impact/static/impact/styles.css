@@ -13,6 +13,8 @@
     --radius-lg: 18px;
     --radius-md: 12px;
     --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.06);
+
+    --water-progress: 75;
 }
 
 *,
@@ -538,28 +540,58 @@ body {
     color: #5f6b63;
 }
 
-.live-water-bottles-row {
+/* Full-width bottle progress bar */
+.live-water-bottle-bar {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Outer track */
+.live-water-bottle-track {
+    width: 100%;
+    height: 70px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #e0f4f5, #e7f3ec);
+    padding: 6px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+/* Filled portion of the track (acts like a progress bar) */
+.live-water-bottle-fill {
+    height: 100%;
+    width: calc(var(--water-progress) * 1%);
+    max-width: 100%;
+    border-radius: 999px;
+    background: linear-gradient(to right, rgba(20, 83, 45, 0.18), rgba(20, 83, 45, 0.3));
+    padding-inline: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 4px 0 0;
+    overflow: hidden;
 }
 
+/* Bottles arranged inside the filled area */
 .live-water-bottle-icons {
-    display: flex;
-    gap: 4px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22px, 1fr));
+    gap: 6px;
+    width: 100%;
 }
 
+/* Single bottle (segment) */
 .live-bottle {
-    width: 12px;
-    height: 26px;
-    border-radius: 5px 5px 7px 7px;
+    width: 100%;
+    aspect-ratio: 12 / 26;
+    border-radius: 7px 7px 10px 10px;
     border: 2px solid rgba(15, 118, 110, 0.7);
     position: relative;
     overflow: hidden;
     background: #f5fbff;
 }
 
+/* Water inside bottle */
 .live-bottle::before {
     content: "";
     position: absolute;
@@ -570,14 +602,15 @@ body {
     background: linear-gradient(to top, #38bdf8, #a5f3fc);
 }
 
+/* Cap */
 .live-bottle::after {
     content: "";
     position: absolute;
-    left: 3px;
-    top: -5px;
-    width: 6px;
-    height: 6px;
-    border-radius: 4px 4px 2px 2px;
+    left: 22%;
+    top: -18%;
+    width: 56%;
+    height: 26%;
+    border-radius: 6px 6px 3px 3px;
     background: #065f46;
 }
 

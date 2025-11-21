@@ -103,14 +103,32 @@
                 <p class="live-water-value">
                     <span id="waterYearBottlesDisplay">0.0</span> B
                 </p>
-                <div class="live-water-bottles-row">
-                    <div class="live-water-bottle-icons">
-                        <div class="live-bottle"></div>
-                        <div class="live-bottle"></div>
-                        <div class="live-bottle"></div>
+                <div class="live-water-bottle-bar">
+                    <div class="live-water-bottle-track">
+                        <div class="live-water-bottle-fill">
+                            <div class="live-water-bottle-icons">
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                                <div class="live-bottle"></div>
+                            </div>
+                        </div>
                     </div>
                     <p class="live-water-note">Visualized as single-liter water bottles.</p>
                 </div>
+                
             </article>
         </div>
 
@@ -155,4 +173,33 @@
     </div>
 </section>
 
+<script>
+    function setYearProgress() {
+        const now = new Date();
+    
+        // Start of this year (Jan 1, 00:00)
+        const startOfYear = new Date(now.getFullYear(), 0, 1);
+    
+        // Start of next year (Jan 1 next year, 00:00)
+        const startOfNextYear = new Date(now.getFullYear() + 1, 0, 1);
+    
+        const elapsedMs = now - startOfYear;
+        const totalMs = startOfNextYear - startOfYear;
+    
+        let progress = (elapsedMs / totalMs) * 100;
+    
+        console.log("Year progress = ", progress);  // debug
+    
+        // Clamp to 0–100
+        if (progress < 0) progress = 0;
+        if (progress > 100) progress = 100;
+    
+        // Write into the CSS variable on :root (html element)
+        document.documentElement.style.setProperty("--water-progress", progress);
+    }
+    
+    // Run once when the page is ready
+    document.addEventListener("DOMContentLoaded", setYearProgress);
+    </script>
+    
 {% endblock %}
