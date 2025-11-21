@@ -575,16 +575,17 @@ body {
 /* Bottles arranged inside the filled area */
 .live-water-bottle-icons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(22px, 1fr));
+    grid-template-columns: repeat(8, 1fr);
     gap: 6px;
     width: 100%;
 }
 
+
 /* Single bottle (segment) */
 .live-bottle {
     width: 100%;
-    aspect-ratio: 12 / 26;
-    border-radius: 7px 7px 10px 10px;
+    height: 50px;
+    border-radius: 8px 8px 12px 12px;
     border: 2px solid rgba(15, 118, 110, 0.7);
     position: relative;
     overflow: hidden;

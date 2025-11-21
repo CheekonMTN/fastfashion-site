@@ -115,14 +115,6 @@
                                 <div class="live-bottle"></div>
                                 <div class="live-bottle"></div>
                                 <div class="live-bottle"></div>
-                                <div class="live-bottle"></div>
-                                <div class="live-bottle"></div>
-                                <div class="live-bottle"></div>
-                                <div class="live-bottle"></div>
-                                <div class="live-bottle"></div>
-                                <div class="live-bottle"></div>
-                                <div class="live-bottle"></div>
-                                <div class="live-bottle"></div>
                             </div>
                         </div>
                     </div>
@@ -173,6 +165,238 @@
     </div>
 </section>
 
+<!-- PROBLEM SECTION -->
+<section id="problem" class="section section-problem section-anchor-offset">
+    <div class="section-inner">
+        <h2 class="section-heading">The Problem</h2>
+        <section class="section">       
+                <p class="section-text">
+                    Fast fashion depends on low-cost fibers that require large amounts of water, energy,
+                    and chemicals. Below you'll find headline statistics drawn from public reports, plus
+                    charts that put the scale of the problem into context.
+                </p>
+            </div>
+        </section>
+        
+        <section id="headline" class="section alt">
+            <div class="section-inner">
+                <h2 class="subheading">Headline numbers</h2>
+                <p class="section-text">
+                    These values are rounded estimates. They are meant to show scale, not exact predictions
+                    for every brand or garment.
+                </p>
+        
+                <div class="stats-grid">
+                    {% for stat in stats %}
+                    <article class="stat-card">
+                        <p class="stat-title">{{ stat.title }}</p>
+                        <p class="stat-value">{{ stat.value }} {{ stat.unit }}</p>
+                        <p class="stat-desc">{{ stat.description }}</p>
+                        {% if stat.source %}
+                            <p class="stat-source">Source: {{ stat.source }}</p>
+                        {% endif %}
+                    </article>
+                    {% empty %}
+                    <p>No stats added yet. Use the admin site to create a few headline values.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        
+                </div> <!-- end of .stats-grid -->
+        
+                <p class="section-text" style="margin-top: 10px;">
+                    <strong>Note:</strong> These numbers come from public reports and industry analyses.
+                    They show approximate scale, not exact predictions for every brand or garment.
+                    Water use, emissions, and waste vary by region, production method, and year.
+                </p>
+        
+            </div> <!-- end of .section-inner -->
+        </section>
+        
+        </div> <!-- end of .section-inner -->
+        </section>
+        
+        <section class="section">
+            <div class="section-inner">
+                <h2 class="subheading">Why fast fashion uses so much water</h2>
+                <p class="section-text">
+                    Cotton farming is one of the most water-intensive agricultural systems in the world, 
+                    especially in dry regions where irrigation is required. On top of farming, dyeing, 
+                    bleaching, and finishing fabrics use millions of liters of water each day. As fashion 
+                    production accelerated in the 2000s, water use rose dramatically to keep up with demand.
+                </p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-inner">
+                <h2 class="subheading">Explosion of synthetic fibers</h2>
+                <p class="section-text">
+                    Today, around 69% of all global fiber production is synthetic — mainly polyester made 
+                    from fossil fuels. These fibers are cheap, versatile, and perfectly suited for fast 
+                    fashion’s rapid turnover model. However, synthetic production carries significant 
+                    environmental costs, including high energy use, carbon emissions, and long-lasting waste.
+                </p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-inner">
+                <h2 class="subheading">Overproduction and short clothing lifespans</h2>
+                <p class="section-text">
+                    The fashion industry now produces more than 100 billion garments annually — more than 
+                    enough for every person on Earth to buy 12–14 items every year. Many of these pieces 
+                    are worn only a handful of times. About 60% of clothing is discarded within one year, 
+                    contributing to massive resource waste and landfill buildup.
+                </p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-inner">
+                <h2 class="subheading">What happens to clothes after we throw them away?</h2>
+                <p class="section-text">
+                    Around 87% of discarded textiles end up in landfills or incinerators. Only a small 
+                    portion is recycled, and most of that is downcycled into lower-quality materials like 
+                    insulation or industrial rags. Synthetic clothes can take decades to centuries to break 
+                    down, releasing microplastics and chemicals as they degrade.
+                </p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-inner">
+                <h2 class="subheading">Microplastics from polyester</h2>
+                <p class="section-text">
+                    Each load of laundry releases hundreds of thousands of tiny synthetic fibers into 
+                    waterways. These microplastics have been found in oceans, soil, food, drinking water, 
+                    and even human blood. Because polyester dominates the fast fashion market, microfiber 
+                    pollution is growing quickly and has become one of the biggest environmental concerns 
+                    connected to clothing.
+                </p>
+            </div>
+        </section>
+        
+        <section class="section alt">
+            <div class="section-inner">
+                <h2 class="subheading">Fashion before vs. after the fast fashion boom</h2>
+                <div class="card-grid three">
+                    <article class="info-card">
+                        <h3>Before (1990s)</h3>
+                        <p>Seasonal collections</p>
+                        <p>Higher-quality materials</p>
+                        <p>More natural fibers</p>
+                        <p>Less waste</p>
+                    </article>
+        
+                    <article class="info-card">
+                        <h3>Today</h3>
+                        <p>Ultra-fast production cycles</p>
+                        <p>More synthetic fibers</p>
+                        <p>Lower durability</p>
+                        <p>Rising water use and waste</p>
+                    </article>
+        
+                    <article class="info-card">
+                        <h3>The impact</h3>
+                        <p>Increased landfill buildup</p>
+                        <p>More microplastics released</p>
+                        <p>Higher global emissions</p>
+                        <p>Greater demand for resources</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <section class="section">
+            <div class="section-inner">
+                <h2 class="subheading">Visual 1: Material comparison</h2>
+                <p class="section-text">
+                    A simple chart comparing environmental impact by material (for example, liters of water
+                    used per kilogram of fiber).
+                </p>
+                <img src="{% static 'impact/chart_materials.png' %}" class="chart-img"
+                     alt="Chart comparing environmental impact by material">
+            </div>
+        </section>
+        
+        <section class="section alt">
+            <div class="section-inner">
+                <h2 class="subheading">Visual 2: Before vs. fast fashion era</h2>
+                <p class="section-text">
+                    A before/after view showing how textile waste or production has changed from an earlier
+                    baseline to the fast fashion era.
+                </p>
+                <img src="{% static 'impact/chart_before_after.png' %}" class="chart-img"
+                     alt="Before and after chart for textile waste or production">
+            </div>
+        </section>
+    </div>
+</section>
+
+<!-- SOLUTIONS SECTION -->
+<section id="solutions" class="section section-solutions section-anchor-offset">
+    <div class="section-inner">
+        <h2 class="section-heading">Solutions</h2>
+        <section class="section">
+                <p class="section-text">
+                    Individuals aren’t responsible for fixing the fashion system—but we can still take
+                    actions that matter. Here are realistic steps, plus a brief fairness and ethics check
+                    to keep things grounded.
+                </p>
+            </div>
+        </section>
+        
+        <section class="section alt">
+            <div class="section-inner">
+                <h2 class="subheading">Fairness & Ethics</h2>
+                <p class="section-text">
+                    Sustainability often costs more. Not everyone can afford slow fashion, sustainable
+                    brands, or specialty materials. Any “solution” must respect budgets, needs, and access.
+                </p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-inner">
+                <h2 class="subheading">Realistic Actions</h2>
+        
+                <ul class="action-list">
+                    <li>Buy fewer new items and wear the ones you have longer.</li>
+                    <li>When affordable, try second-hand or clothing swaps.</li>
+                    <li>Repair small rips or missing buttons instead of replacing clothes.</li>
+                    <li>Donate or recycle textiles locally when possible.</li>
+                    <li>Talk with friends about habits and sustainable options.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</section>
+
+<!-- SOURCES / REFERENCES SECTION -->
+<section id="sources" class="section section-sources section-anchor-offset">
+    <div class="section-inner">
+        <h2 class="section-heading">Sources</h2>
+        <section class="section">
+        
+                <p class="section-text">
+                    These are the reports, articles, and datasets used to create the headline numbers
+                    and visuals on this site.
+                </p>
+        
+                <ul class="source-list">
+                    <li>Replace with your real sources from your research.</li>
+                    <li>UN reports, Ellen MacArthur Foundation, WRAP, etc.</li>
+                    <li>Articles on water use, CO₂ emissions, textile waste.</li>
+                    <li>Datasets on global production and disposal trends.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</section>
 <script>
     function setYearProgress() {
         const now = new Date();
