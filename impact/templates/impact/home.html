@@ -6,28 +6,6 @@
 
 {% block content %}
 
-<!-- Floating Navigation -->
-<nav class="floating-nav" id="floating-nav">
-    <div class="floating-nav-inner">
-        <a href="#calculator" class="nav-pill" data-section="calculator">
-            <span class="nav-icon">🧮</span>
-            <span class="nav-text">Calculator</span>
-        </a>
-        <a href="#problem" class="nav-pill" data-section="problem">
-            <span class="nav-icon">📊</span>
-            <span class="nav-text">The Problem</span>
-        </a>
-        <a href="#solutions" class="nav-pill" data-section="solutions">
-            <span class="nav-icon">💡</span>
-            <span class="nav-text">Solutions</span>
-        </a>
-        <a href="#sources" class="nav-pill" data-section="sources">
-            <span class="nav-icon">📚</span>
-            <span class="nav-text">Sources</span>
-        </a>
-    </div>
-</nav>
-
 <section class="hero hero-video">
     <!-- Background video -->
     <div class="hero-video-bg">
@@ -235,13 +213,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Section Navigation -->
-    <div class="section-nav">
-        <a href="#problem" class="section-nav-btn">
-            <span>Explore The Problem →</span>
-        </a>
     </div>
 </section>
 
@@ -542,13 +513,6 @@
             </div>
         </section>
     </div>
-    
-    <!-- Section Navigation -->
-    <div class="section-nav">
-        <a href="#solutions" class="section-nav-btn">
-            <span>See Solutions →</span>
-        </a>
-    </div>
 </section>
 
 <!-- SOLUTIONS SECTION -->
@@ -587,13 +551,6 @@
                 </ul>
             </div>
         </section>
-    </div>
-    
-    <!-- Section Navigation -->
-    <div class="section-nav">
-        <a href="#sources" class="section-nav-btn">
-            <span>View Sources →</span>
-        </a>
     </div>
 </section>
 
@@ -946,97 +903,6 @@
         if (comparisonSection) {
             observer.observe(comparisonSection);
         }
-    });
-</script>
-
-<script>
-    // Floating Navigation
-    document.addEventListener("DOMContentLoaded", function() {
-        const floatingNav = document.getElementById('floating-nav');
-        const navPills = document.querySelectorAll('.nav-pill');
-        const sections = ['calculator', 'problem', 'solutions', 'sources'];
-        
-        // Show/hide nav on scroll
-        let lastScroll = 0;
-        window.addEventListener('scroll', function() {
-            const currentScroll = window.pageYOffset;
-            const heroHeight = document.querySelector('.hero')?.offsetHeight || 600;
-            
-            if (currentScroll > heroHeight - 100) {
-                floatingNav.classList.add('visible');
-            } else {
-                floatingNav.classList.remove('visible');
-            }
-            
-            // Hide on scroll down, show on scroll up (optional)
-            if (window.innerWidth > 768) {
-                if (currentScroll > lastScroll && currentScroll > heroHeight) {
-                    floatingNav.style.transform = 'translateX(-50%) translateY(100px)';
-                } else {
-                    if (currentScroll > heroHeight - 100) {
-                        floatingNav.style.transform = 'translateX(-50%) translateY(0)';
-                    }
-                }
-            } else {
-                if (currentScroll > lastScroll && currentScroll > heroHeight) {
-                    floatingNav.style.transform = 'translateY(100px)';
-                } else {
-                    if (currentScroll > heroHeight - 100) {
-                        floatingNav.style.transform = 'translateY(0)';
-                    }
-                }
-            }
-            lastScroll = currentScroll;
-            
-            // Update active section
-            updateActiveSection();
-        });
-        
-        // Update active section based on scroll position
-        function updateActiveSection() {
-            const scrollPos = window.pageYOffset + 200;
-            
-            sections.forEach(sectionId => {
-                const section = document.getElementById(sectionId);
-                if (!section) return;
-                
-                const sectionTop = section.offsetTop;
-                const sectionBottom = sectionTop + section.offsetHeight;
-                const navPill = document.querySelector(`.nav-pill[data-section="${sectionId}"]`);
-                
-                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                    navPills.forEach(pill => pill.classList.remove('active'));
-                    if (navPill) navPill.classList.add('active');
-                }
-            });
-        }
-        
-        // Smooth scroll on click
-        navPills.forEach(pill => {
-            pill.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    const headerOffset = 80;
-                    const elementPosition = targetSection.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active state
-                    navPills.forEach(p => p.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-        });
-        
-        // Initial check
-        updateActiveSection();
     });
 </script>
     
