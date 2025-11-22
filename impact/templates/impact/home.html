@@ -6,6 +6,28 @@
 
 {% block content %}
 
+<!-- Floating Navigation -->
+<nav class="floating-nav" id="floating-nav">
+    <div class="floating-nav-inner">
+        <a href="#calculator" class="nav-pill" data-section="calculator">
+            <span class="nav-icon">🧮</span>
+            <span class="nav-text">Calculator</span>
+        </a>
+        <a href="#problem" class="nav-pill" data-section="problem">
+            <span class="nav-icon">📊</span>
+            <span class="nav-text">The Problem</span>
+        </a>
+        <a href="#solutions" class="nav-pill" data-section="solutions">
+            <span class="nav-icon">💡</span>
+            <span class="nav-text">Solutions</span>
+        </a>
+        <a href="#sources" class="nav-pill" data-section="sources">
+            <span class="nav-icon">📚</span>
+            <span class="nav-text">Sources</span>
+        </a>
+    </div>
+</nav>
+
 <section class="hero hero-video">
     <!-- Background video -->
     <div class="hero-video-bg">
@@ -54,6 +76,9 @@
             Cotton, polyester, viscose: fast fashion relies on materials with heavy resource demands.
             From water use to textile waste, this overview highlights the scale of the issue.
         </p>
+        <div class="strip-image">
+            <img src="{% static 'impact/imgs/clothes-on-rack.jpg' %}" alt="Clothing on rack representing fast fashion production" class="strip-img">
+        </div>
     </div>
 </section>
 
@@ -211,6 +236,13 @@
             </div>
         </div>
     </div>
+    
+    <!-- Section Navigation -->
+    <div class="section-nav">
+        <a href="#problem" class="section-nav-btn">
+            <span>Explore The Problem →</span>
+        </a>
+    </div>
 </section>
 
 <!-- PROBLEM SECTION -->
@@ -304,12 +336,19 @@
         <section class="section">
             <div class="section-inner">
                 <h2 class="subheading">What happens to clothes after we throw them away?</h2>
-                <p class="section-text">
-                    Around 87% of discarded textiles end up in landfills or incinerators. Only a small 
-                    portion is recycled, and most of that is downcycled into lower-quality materials like 
-                    insulation or industrial rags. Synthetic clothes can take decades to centuries to break 
-                    down, releasing microplastics and chemicals as they degrade.
-                </p>
+                <div class="content-with-image">
+                    <div class="text-content">
+                        <p class="section-text">
+                            Around 87% of discarded textiles end up in landfills or incinerators. Only a small 
+                            portion is recycled, and most of that is downcycled into lower-quality materials like 
+                            insulation or industrial rags. Synthetic clothes can take decades to centuries to break 
+                            down, releasing microplastics and chemicals as they degrade.
+                        </p>
+                    </div>
+                    <div class="image-content">
+                        <img src="{% static 'impact/imgs/landfill.jpg' %}" alt="Textile waste in landfill" class="section-img">
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -361,27 +400,154 @@
         
         <section class="section">
             <div class="section-inner">
-                <h2 class="subheading">Visual 1: Material comparison</h2>
+                <h2 class="subheading">Material Impact Comparison</h2>
                 <p class="section-text">
-                    A simple chart comparing environmental impact by material (for example, liters of water
-                    used per kilogram of fiber).
+                    Compare the environmental impact of different materials. Hover over each bar to see detailed metrics. 
+                    The numbers might surprise you.
                 </p>
-                <img src="{% static 'impact/chart_materials.png' %}" class="chart-img"
-                     alt="Chart comparing environmental impact by material">
+                
+                <div class="interactive-chart">
+                    <div class="chart-controls">
+                        <button class="chart-btn active" data-metric="water">Water Usage</button>
+                        <button class="chart-btn" data-metric="co2">CO₂ Emissions</button>
+                        <button class="chart-btn" data-metric="waste">Waste Impact</button>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-bars" id="material-chart">
+                            <div class="chart-bar-wrapper" data-material="cotton">
+                                <div class="chart-bar" data-value="10000" style="--bar-color: #2f6f4e;">
+                                    <div class="bar-fill"></div>
+                                    <div class="bar-label">Cotton</div>
+                                    <div class="bar-value">10,000L</div>
+                                    <div class="bar-tooltip">
+                                        <strong>Cotton</strong><br>
+                                        Water: 10,000L/kg<br>
+                                        CO₂: 15kg/kg<br>
+                                        Most water-intensive
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-bar-wrapper" data-material="polyester">
+                                <div class="chart-bar" data-value="2000" style="--bar-color: #d97757;">
+                                    <div class="bar-fill"></div>
+                                    <div class="bar-label">Polyester</div>
+                                    <div class="bar-value">2,000L</div>
+                                    <div class="bar-tooltip">
+                                        <strong>Polyester</strong><br>
+                                        Water: 2,000L/kg<br>
+                                        CO₂: 25kg/kg<br>
+                                        Highest emissions
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-bar-wrapper" data-material="viscose">
+                                <div class="chart-bar" data-value="6000" style="--bar-color: #95d5b2;">
+                                    <div class="bar-fill"></div>
+                                    <div class="bar-label">Viscose</div>
+                                    <div class="bar-value">6,000L</div>
+                                    <div class="bar-tooltip">
+                                        <strong>Viscose</strong><br>
+                                        Water: 6,000L/kg<br>
+                                        CO₂: 12kg/kg<br>
+                                        Chemical-intensive
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-bar-wrapper" data-material="wool">
+                                <div class="chart-bar" data-value="8000" style="--bar-color: #1f3f30;">
+                                    <div class="bar-fill"></div>
+                                    <div class="bar-label">Wool</div>
+                                    <div class="bar-value">8,000L</div>
+                                    <div class="bar-tooltip">
+                                        <strong>Wool</strong><br>
+                                        Water: 8,000L/kg<br>
+                                        CO₂: 18kg/kg<br>
+                                        High methane emissions
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-legend">
+                            <p class="chart-note">* Per kilogram of fiber produced</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
         <section class="section alt">
             <div class="section-inner">
-                <h2 class="subheading">Visual 2: Before vs. fast fashion era</h2>
+                <h2 class="subheading">The Fast Fashion Explosion</h2>
                 <p class="section-text">
-                    A before/after view showing how textile waste or production has changed from an earlier
-                    baseline to the fast fashion era.
+                    See how dramatically the fashion industry changed. The numbers tell a shocking story of growth and waste.
                 </p>
-                <img src="{% static 'impact/chart_before_after.png' %}" class="chart-img"
-                     alt="Before and after chart for textile waste or production">
+                
+                <div class="comparison-visual">
+                    <div class="comparison-container">
+                        <div class="comparison-item">
+                            <div class="comparison-label">
+                                <span class="comparison-year">1990s</span>
+                                <span class="comparison-title">Before Fast Fashion</span>
+                            </div>
+                            <div class="comparison-bar-wrapper">
+                                <div class="comparison-bar before" data-value="20">
+                                    <div class="bar-fill-animated"></div>
+                                    <div class="bar-text">20 billion garments/year</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-divider">
+                            <div class="divider-line"></div>
+                            <div class="divider-arrow">→</div>
+                            <div class="divider-text">500% increase</div>
+                        </div>
+                        
+                        <div class="comparison-item">
+                            <div class="comparison-label">
+                                <span class="comparison-year">Today</span>
+                                <span class="comparison-title">Fast Fashion Era</span>
+                            </div>
+                            <div class="comparison-bar-wrapper">
+                                <div class="comparison-bar after" data-value="100">
+                                    <div class="bar-fill-animated"></div>
+                                    <div class="bar-text">100+ billion garments/year</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-stats">
+                        <div class="comparison-stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-number" data-target="500">0</div>
+                            <div class="stat-label">% Production Increase</div>
+                        </div>
+                        <div class="comparison-stat-card">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-number" data-target="52">0</div>
+                            <div class="stat-label">Collections Per Year</div>
+                        </div>
+                        <div class="comparison-stat-card">
+                            <div class="stat-icon">🗑️</div>
+                            <div class="stat-number" data-target="92">0</div>
+                            <div class="stat-label">Million Tons Waste/Year</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+    </div>
+    
+    <!-- Section Navigation -->
+    <div class="section-nav">
+        <a href="#solutions" class="section-nav-btn">
+            <span>See Solutions →</span>
+        </a>
     </div>
 </section>
 
@@ -421,6 +587,13 @@
                 </ul>
             </div>
         </section>
+    </div>
+    
+    <!-- Section Navigation -->
+    <div class="section-nav">
+        <a href="#sources" class="section-nav-btn">
+            <span>View Sources →</span>
+        </a>
     </div>
 </section>
 
@@ -623,6 +796,247 @@
                 calculateImpact();
             }
         });
+    });
+</script>
+
+<script>
+    // Interactive Material Chart
+    document.addEventListener("DOMContentLoaded", function() {
+        const chartBtns = document.querySelectorAll(".chart-btn");
+        const chartBars = document.querySelectorAll(".chart-bar");
+        
+        // Chart data for different metrics
+        const chartData = {
+            water: {
+                cotton: 10000,
+                polyester: 2000,
+                viscose: 6000,
+                wool: 8000,
+                labels: { cotton: "10,000L", polyester: "2,000L", viscose: "6,000L", wool: "8,000L" },
+                tooltips: {
+                    cotton: "<strong>Cotton</strong><br>Water: 10,000L/kg<br>CO₂: 15kg/kg<br>Most water-intensive",
+                    polyester: "<strong>Polyester</strong><br>Water: 2,000L/kg<br>CO₂: 25kg/kg<br>Highest emissions",
+                    viscose: "<strong>Viscose</strong><br>Water: 6,000L/kg<br>CO₂: 12kg/kg<br>Chemical-intensive",
+                    wool: "<strong>Wool</strong><br>Water: 8,000L/kg<br>CO₂: 18kg/kg<br>High methane emissions"
+                }
+            },
+            co2: {
+                cotton: 15,
+                polyester: 25,
+                viscose: 12,
+                wool: 18,
+                labels: { cotton: "15kg", polyester: "25kg", viscose: "12kg", wool: "18kg" },
+                tooltips: {
+                    cotton: "<strong>Cotton</strong><br>Water: 10,000L/kg<br>CO₂: 15kg/kg<br>Most water-intensive",
+                    polyester: "<strong>Polyester</strong><br>Water: 2,000L/kg<br>CO₂: 25kg/kg<br>Highest emissions",
+                    viscose: "<strong>Viscose</strong><br>Water: 6,000L/kg<br>CO₂: 12kg/kg<br>Chemical-intensive",
+                    wool: "<strong>Wool</strong><br>Water: 8,000L/kg<br>CO₂: 18kg/kg<br>High methane emissions"
+                }
+            },
+            waste: {
+                cotton: 0.5,
+                polyester: 0.8,
+                viscose: 0.6,
+                wool: 0.4,
+                labels: { cotton: "0.5kg", polyester: "0.8kg", viscose: "0.6kg", wool: "0.4kg" },
+                tooltips: {
+                    cotton: "<strong>Cotton</strong><br>Biodegradable<br>Waste: 0.5kg/item<br>Takes 1-5 months",
+                    polyester: "<strong>Polyester</strong><br>Non-biodegradable<br>Waste: 0.8kg/item<br>Takes 200+ years",
+                    viscose: "<strong>Viscose</strong><br>Partially biodegradable<br>Waste: 0.6kg/item<br>Chemical waste",
+                    wool: "<strong>Wool</strong><br>Biodegradable<br>Waste: 0.4kg/item<br>Takes 1-5 years"
+                }
+            }
+        };
+        
+        // Animate bars on load
+        function animateBars(metric) {
+            const data = chartData[metric];
+            const maxValue = Math.max(...Object.values(data).filter(v => typeof v === 'number'));
+            const chartContainer = document.querySelector('.chart-bars');
+            const containerHeight = chartContainer ? chartContainer.offsetHeight - 100 : 300;
+            
+            chartBars.forEach((bar, index) => {
+                const material = bar.closest('.chart-bar-wrapper').dataset.material;
+                const value = data[material];
+                const percentage = (value / maxValue) * 100;
+                const height = (containerHeight * percentage) / 100;
+                
+                const fill = bar.querySelector('.bar-fill');
+                const valueEl = bar.querySelector('.bar-value');
+                const tooltip = bar.querySelector('.bar-tooltip');
+                
+                // Reset and animate height
+                fill.style.height = '0px';
+                setTimeout(() => {
+                    fill.style.height = height + 'px';
+                }, index * 100);
+                
+                // Update value
+                valueEl.textContent = data.labels[material];
+                
+                // Update tooltip
+                if (tooltip) {
+                    tooltip.innerHTML = data.tooltips[material];
+                }
+            });
+        }
+        
+        // Switch metrics
+        chartBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                chartBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                animateBars(this.dataset.metric);
+            });
+        });
+        
+        // Initial animation
+        setTimeout(() => {
+            animateBars('water');
+        }, 500);
+    });
+    
+    // Before/After Comparison Animation
+    document.addEventListener("DOMContentLoaded", function() {
+        const beforeBar = document.querySelector('.comparison-bar.before .bar-fill-animated');
+        const afterBar = document.querySelector('.comparison-bar.after .bar-fill-animated');
+        const statNumbers = document.querySelectorAll('.comparison-stat-card .stat-number');
+        
+        // Animate bars
+        function animateComparison() {
+            if (beforeBar) {
+                beforeBar.style.width = '20%';
+            }
+            if (afterBar) {
+                setTimeout(() => {
+                    afterBar.style.width = '100%';
+                }, 300);
+            }
+            
+            // Animate stat numbers
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.dataset.target);
+                let current = 0;
+                const increment = target / 60;
+                const duration = 2000;
+                const stepTime = duration / 60;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.round(current) + (target >= 100 ? '' : '%');
+                }, stepTime);
+            });
+        }
+        
+        // Trigger animation when section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateComparison();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        const comparisonSection = document.querySelector('.comparison-visual');
+        if (comparisonSection) {
+            observer.observe(comparisonSection);
+        }
+    });
+</script>
+
+<script>
+    // Floating Navigation
+    document.addEventListener("DOMContentLoaded", function() {
+        const floatingNav = document.getElementById('floating-nav');
+        const navPills = document.querySelectorAll('.nav-pill');
+        const sections = ['calculator', 'problem', 'solutions', 'sources'];
+        
+        // Show/hide nav on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            const heroHeight = document.querySelector('.hero')?.offsetHeight || 600;
+            
+            if (currentScroll > heroHeight - 100) {
+                floatingNav.classList.add('visible');
+            } else {
+                floatingNav.classList.remove('visible');
+            }
+            
+            // Hide on scroll down, show on scroll up (optional)
+            if (window.innerWidth > 768) {
+                if (currentScroll > lastScroll && currentScroll > heroHeight) {
+                    floatingNav.style.transform = 'translateX(-50%) translateY(100px)';
+                } else {
+                    if (currentScroll > heroHeight - 100) {
+                        floatingNav.style.transform = 'translateX(-50%) translateY(0)';
+                    }
+                }
+            } else {
+                if (currentScroll > lastScroll && currentScroll > heroHeight) {
+                    floatingNav.style.transform = 'translateY(100px)';
+                } else {
+                    if (currentScroll > heroHeight - 100) {
+                        floatingNav.style.transform = 'translateY(0)';
+                    }
+                }
+            }
+            lastScroll = currentScroll;
+            
+            // Update active section
+            updateActiveSection();
+        });
+        
+        // Update active section based on scroll position
+        function updateActiveSection() {
+            const scrollPos = window.pageYOffset + 200;
+            
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (!section) return;
+                
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                const navPill = document.querySelector(`.nav-pill[data-section="${sectionId}"]`);
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                    navPills.forEach(pill => pill.classList.remove('active'));
+                    if (navPill) navPill.classList.add('active');
+                }
+            });
+        }
+        
+        // Smooth scroll on click
+        navPills.forEach(pill => {
+            pill.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const headerOffset = 80;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state
+                    navPills.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Initial check
+        updateActiveSection();
     });
 </script>
     
