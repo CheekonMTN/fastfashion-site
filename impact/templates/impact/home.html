@@ -26,21 +26,21 @@
     <div class="hero-overlay">
         <div class="hero-inner hero-overlay-inner">
             <div class="hero-text">
-                <p class="hero-tagline">Fast fashion’s hidden environmental cost</p>
+                <p class="hero-tagline">Fast fashion's hidden environmental cost</p>
 
                 <h1 class="hero-title">
                     A clear, data-driven look at how fast fashion impacts water,
                     waste, and the planet.
                 </h1>
-
-                <div class="hero-buttons">
-                    <a href="{% url 'problem' %}#headline" class="btn primary">
-                        Explore the data
-                    </a>
-                    <a href="{% url 'solutions' %}" class="btn ghost">
-                        What you can do
-                    </a>
-                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#problem" class="btn pill">
+                    Explore the data
+                </a>
+                <a href="#solutions" class="btn pill">
+                    What you can do
+                </a>
             </div>
         </div>
     </div>
@@ -144,6 +144,70 @@
                     Realistic, affordable actions for students and communities, plus a fairness
                     and ethics note.
                 </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PERSONAL IMPACT CALCULATOR -->
+<section id="calculator" class="section section-calculator section-anchor-offset">
+    <div class="section-inner">
+        <h2 class="section-heading">Calculate Your Impact</h2>
+        <p class="section-text">
+            See how your clothing choices add up. Enter your annual purchases to discover your personal 
+            water footprint, carbon emissions, and waste contribution.
+        </p>
+        
+        <div class="calculator-container">
+            <div class="calculator-inputs">
+                <div class="calc-input-group">
+                    <label for="items-per-year">How many clothing items do you buy per year?</label>
+                    <input type="number" id="items-per-year" min="0" max="500" value="20" step="1">
+                    <span class="calc-hint">Average: 20-30 items per year</span>
+                </div>
+                
+                <div class="calc-input-group">
+                    <label for="material-type">Primary material type</label>
+                    <select id="material-type">
+                        <option value="cotton">Cotton</option>
+                        <option value="polyester">Polyester</option>
+                        <option value="viscose">Viscose</option>
+                        <option value="mixed">Mixed (average)</option>
+                    </select>
+                </div>
+                
+                <button id="calculate-btn" class="btn-calculate">Calculate My Impact</button>
+            </div>
+            
+            <div id="calculator-results" class="calculator-results" style="display: none;">
+                <h3 class="results-title">Your Annual Impact</h3>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-icon">💧</div>
+                        <div class="result-value" id="water-result">0</div>
+                        <div class="result-label">Liters of water</div>
+                        <div class="result-comparison" id="water-comparison"></div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">🌍</div>
+                        <div class="result-value" id="co2-result">0</div>
+                        <div class="result-label">kg CO₂ emissions</div>
+                        <div class="result-comparison" id="co2-comparison"></div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">🗑️</div>
+                        <div class="result-value" id="waste-result">0</div>
+                        <div class="result-label">kg textile waste</div>
+                        <div class="result-comparison" id="waste-comparison"></div>
+                    </div>
+                </div>
+                
+                <div class="results-tip">
+                    <p><strong>💡 Tip:</strong> Extending the life of your clothes by just 9 months can reduce your environmental impact by 20-30%.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -409,5 +473,157 @@
     // Run once when the page is ready
     document.addEventListener("DOMContentLoaded", setYearProgress);
     </script>
+
+<script>
+    // Personal Impact Calculator
+    document.addEventListener("DOMContentLoaded", function() {
+        const calculateBtn = document.getElementById("calculate-btn");
+        const itemsInput = document.getElementById("items-per-year");
+        const materialSelect = document.getElementById("material-type");
+        const resultsDiv = document.getElementById("calculator-results");
+        
+        // Impact data per item (approximate averages in kg)
+        const impactData = {
+            cotton: {
+                water: 10000,      // liters per kg (cotton is very water-intensive)
+                co2: 15,           // kg CO2 per kg
+                waste: 0.5         // kg waste per item (average)
+            },
+            polyester: {
+                water: 2000,       // liters per kg (less water, but more energy)
+                co2: 25,           // kg CO2 per kg (higher due to fossil fuels)
+                waste: 0.5
+            },
+            viscose: {
+                water: 6000,       // liters per kg
+                co2: 12,           // kg CO2 per kg
+                waste: 0.5
+            },
+            mixed: {
+                water: 6000,       // average
+                co2: 17,           // average
+                waste: 0.5
+            }
+        };
+        
+        // Average weight per clothing item (kg)
+        const avgItemWeight = 0.3; // 300g average per item
+        
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + "M";
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + "k";
+            }
+            return Math.round(num).toLocaleString();
+        }
+        
+        function animateValue(element, start, end, duration, formatFunc) {
+            const startTime = performance.now();
+            const isDecimal = end % 1 !== 0;
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const current = start + (end - start) * easeOutQuart;
+                
+                if (isDecimal || end < 1000) {
+                    element.textContent = formatFunc(current);
+                } else {
+                    element.textContent = formatFunc(Math.round(current));
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    // Ensure final value is exact
+                    element.textContent = formatFunc(end);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+        
+        function calculateImpact() {
+            const items = parseInt(itemsInput.value) || 0;
+            const material = materialSelect.value;
+            const data = impactData[material];
+            
+            if (items <= 0) {
+                alert("Please enter a valid number of items.");
+                return;
+            }
+            
+            // Calculate impacts
+            const totalWeight = items * avgItemWeight;
+            const waterLiters = totalWeight * data.water;
+            const co2Kg = totalWeight * data.co2;
+            const wasteKg = items * data.waste;
+            
+            // Show results first
+            resultsDiv.style.display = "block";
+            resultsDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            
+            // Reset to 0 first
+            document.getElementById("water-result").textContent = "0";
+            document.getElementById("co2-result").textContent = "0";
+            document.getElementById("waste-result").textContent = "0";
+            
+            // Animate values counting up
+            const animationDuration = 2000; // 2 seconds
+            
+            animateValue(
+                document.getElementById("water-result"),
+                0,
+                waterLiters,
+                animationDuration,
+                formatNumber
+            );
+            
+            animateValue(
+                document.getElementById("co2-result"),
+                0,
+                co2Kg,
+                animationDuration,
+                formatNumber
+            );
+            
+            animateValue(
+                document.getElementById("waste-result"),
+                0,
+                wasteKg,
+                animationDuration,
+                formatNumber
+            );
+            
+            // Add comparisons (these can appear immediately or with slight delay)
+            setTimeout(() => {
+                const bathtubs = Math.round(waterLiters / 150);
+                document.getElementById("water-comparison").textContent = 
+                    `≈ ${bathtubs} bathtubs of water`;
+                
+                const carMiles = Math.round(co2Kg / 0.4); // ~0.4 kg CO2 per mile
+                document.getElementById("co2-comparison").textContent = 
+                    `≈ ${carMiles} miles driven`;
+                
+                const trashBags = Math.round(wasteKg / 2); // ~2 kg per trash bag
+                document.getElementById("waste-comparison").textContent = 
+                    `≈ ${trashBags} trash bags`;
+            }, animationDuration);
+        }
+        
+        calculateBtn.addEventListener("click", calculateImpact);
+        
+        // Allow Enter key to calculate
+        itemsInput.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                calculateImpact();
+            }
+        });
+    });
+</script>
     
 {% endblock %}
