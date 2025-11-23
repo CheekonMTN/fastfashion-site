@@ -35,11 +35,11 @@
             </div>
             
             <div class="hero-buttons">
+                <a href="#calculator" class="btn pill">
+                    Calculate Your Impact
+                </a>
                 <a href="#problem" class="btn pill">
                     Explore the data
-                </a>
-                <a href="#solutions" class="btn pill">
-                    What you can do
                 </a>
             </div>
         </div>
@@ -56,6 +56,70 @@
         </p>
         <div class="strip-image">
             <img src="{% static 'impact/imgs/clothes-on-rack.jpg' %}" alt="Clothing on rack representing fast fashion production" class="strip-img">
+        </div>
+    </div>
+</section>
+
+<!-- PERSONAL IMPACT CALCULATOR -->
+<section id="calculator" class="section section-calculator section-anchor-offset">
+    <div class="section-inner">
+        <h2 class="section-heading">Calculate Your Impact</h2>
+        <p class="section-text">
+            Start by seeing how your clothing choices add up. Enter your annual purchases to discover your personal 
+            water footprint, carbon emissions, and waste contribution.
+        </p>
+        
+        <div class="calculator-container">
+            <div class="calculator-inputs">
+                <div class="calc-input-group">
+                    <label for="items-per-year">How many clothing items do you buy per year?</label>
+                    <input type="number" id="items-per-year" min="0" max="500" value="20" step="1">
+                    <span class="calc-hint">Average: 20-30 items per year</span>
+                </div>
+                
+                <div class="calc-input-group">
+                    <label for="material-type">Primary material type</label>
+                    <select id="material-type">
+                        <option value="cotton">Cotton</option>
+                        <option value="polyester">Polyester</option>
+                        <option value="viscose">Viscose</option>
+                        <option value="mixed">Mixed (average)</option>
+                    </select>
+                </div>
+                
+                <button id="calculate-btn" class="btn-calculate">Calculate My Impact</button>
+            </div>
+            
+            <div id="calculator-results" class="calculator-results" style="display: none;">
+                <h3 class="results-title">Your Annual Impact</h3>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-icon">💧</div>
+                        <div class="result-value" id="water-result">0</div>
+                        <div class="result-label">Liters of water</div>
+                        <div class="result-comparison" id="water-comparison"></div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">🌍</div>
+                        <div class="result-value" id="co2-result">0</div>
+                        <div class="result-label">kg CO₂ emissions</div>
+                        <div class="result-comparison" id="co2-comparison"></div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">🗑️</div>
+                        <div class="result-value" id="waste-result">0</div>
+                        <div class="result-label">kg textile waste</div>
+                        <div class="result-comparison" id="waste-comparison"></div>
+                    </div>
+                </div>
+                
+                <div class="results-tip">
+                    <p><strong>💡 Tip:</strong> Extending the life of your clothes by just 9 months can reduce your environmental impact by 20-30%.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -116,103 +180,6 @@
             This counter converts that to liters per second and multiplies by the time since
             January 1st. It illustrates scale rather than providing an exact real-time reading.
         </p>
-    </div>
-</section>
-
-<!-- INFO CARDS -->
-<section class="section">
-    <div class="section-inner">
-        <h2 class="section-heading">What you will find here</h2>
-
-        <div class="card-grid three">
-            <div class="info-card">
-                <h3>Key statistics</h3>
-                <p>
-                    A small set of headline numbers showing water use, emissions, and textile waste
-                    by common fashion materials.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h3>Two clear visuals</h3>
-                <p>
-                    Simple charts comparing fibers and showing how waste and production changed
-                    over time.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h3>Practical solutions</h3>
-                <p>
-                    Realistic, affordable actions for students and communities, plus a fairness
-                    and ethics note.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- PERSONAL IMPACT CALCULATOR -->
-<section id="calculator" class="section section-calculator section-anchor-offset">
-    <div class="section-inner">
-        <h2 class="section-heading">Calculate Your Impact</h2>
-        <p class="section-text">
-            See how your clothing choices add up. Enter your annual purchases to discover your personal 
-            water footprint, carbon emissions, and waste contribution.
-        </p>
-        
-        <div class="calculator-container">
-            <div class="calculator-inputs">
-                <div class="calc-input-group">
-                    <label for="items-per-year">How many clothing items do you buy per year?</label>
-                    <input type="number" id="items-per-year" min="0" max="500" value="20" step="1">
-                    <span class="calc-hint">Average: 20-30 items per year</span>
-                </div>
-                
-                <div class="calc-input-group">
-                    <label for="material-type">Primary material type</label>
-                    <select id="material-type">
-                        <option value="cotton">Cotton</option>
-                        <option value="polyester">Polyester</option>
-                        <option value="viscose">Viscose</option>
-                        <option value="mixed">Mixed (average)</option>
-                    </select>
-                </div>
-                
-                <button id="calculate-btn" class="btn-calculate">Calculate My Impact</button>
-            </div>
-            
-            <div id="calculator-results" class="calculator-results" style="display: none;">
-                <h3 class="results-title">Your Annual Impact</h3>
-                
-                <div class="results-grid">
-                    <div class="result-card">
-                        <div class="result-icon">💧</div>
-                        <div class="result-value" id="water-result">0</div>
-                        <div class="result-label">Liters of water</div>
-                        <div class="result-comparison" id="water-comparison"></div>
-                    </div>
-                    
-                    <div class="result-card">
-                        <div class="result-icon">🌍</div>
-                        <div class="result-value" id="co2-result">0</div>
-                        <div class="result-label">kg CO₂ emissions</div>
-                        <div class="result-comparison" id="co2-comparison"></div>
-                    </div>
-                    
-                    <div class="result-card">
-                        <div class="result-icon">🗑️</div>
-                        <div class="result-value" id="waste-result">0</div>
-                        <div class="result-label">kg textile waste</div>
-                        <div class="result-comparison" id="waste-comparison"></div>
-                    </div>
-                </div>
-                
-                <div class="results-tip">
-                    <p><strong>💡 Tip:</strong> Extending the life of your clothes by just 9 months can reduce your environmental impact by 20-30%.</p>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 

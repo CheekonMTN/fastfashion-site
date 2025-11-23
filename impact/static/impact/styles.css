@@ -192,7 +192,9 @@ body {
 
 /* Button pill styles */
 .btn.pill {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 24px 48px;
     background-color: #ffffff;
     color: var(--accent);
@@ -203,6 +205,9 @@ body {
     transition: all 0.2s ease;
     border: none;
     cursor: pointer;
+    width: 280px;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .btn.pill:hover {
