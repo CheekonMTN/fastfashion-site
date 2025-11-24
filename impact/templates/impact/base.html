@@ -23,7 +23,13 @@
             <a href="{% url 'home' %}">Home</a>
         </nav>
 
-        <a href="#problem" class="nav-cta">View Data</a>
+        <div class="header-actions">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon sun-icon">☀️</span>
+                <span class="theme-icon moon-icon">🌙</span>
+            </button>
+            <a href="#problem" class="nav-cta">View Data</a>
+        </div>
     </div>
 </header>
 
@@ -79,6 +85,52 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script src="{% static 'impact/js/year-progress.js' %}"></script>
+
+<script>
+    // Dark Mode Toggle
+    (function() {
+        'use strict';
+        
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply the saved theme
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.setAttribute('data-theme', 'light');
+        }
+        
+        // Toggle theme on button click
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+        
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Only apply system preference if user hasn't manually set a preference
+            if (!localStorage.getItem('theme')) {
+                const handleChange = (e) => {
+                    html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                };
+                
+                mediaQuery.addEventListener('change', handleChange);
+                handleChange(mediaQuery);
+            }
+        }
+    })();
+</script>
 
 </body>
 </html>
