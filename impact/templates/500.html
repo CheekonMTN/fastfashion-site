@@ -1,0 +1,22 @@
+{% extends "impact/base.html" %}
+{% load static %}
+
+{% block title %}Server Error - Fighting Fast Fashion{% endblock %}
+
+{% block content %}
+<section class="section" style="min-height: 60vh; display: flex; align-items: center;">
+    <div class="section-inner" style="text-align: center; max-width: 600px; margin: 0 auto;">
+        <h1 class="section-heading" style="font-size: 4rem; margin-bottom: 20px;">500</h1>
+        <h2 class="subheading">Server Error</h2>
+        <p class="section-text">
+            We're experiencing some technical difficulties. Please try again later.
+        </p>
+        <div style="margin-top: 32px;">
+            <a href="{% url 'home' %}" class="btn pill" style="display: inline-block;">
+                Return to Home
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
