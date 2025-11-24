@@ -33,14 +33,14 @@
                     waste, and the planet.
                 </h1>
             </div>
-            
-            <div class="hero-buttons">
+
+                <div class="hero-buttons">
                 <a href="#calculator" class="btn pill">
                     Calculate Your Impact
                 </a>
                 <a href="#problem" class="btn pill">
-                    Explore the data
-                </a>
+                        Explore the data
+                    </a>
             </div>
         </div>
     </div>
@@ -71,20 +71,65 @@
         
         <div class="calculator-container">
             <div class="calculator-inputs">
-                <div class="calc-input-group">
-                    <label for="items-per-year">How many clothing items do you buy per year?</label>
-                    <input type="number" id="items-per-year" min="0" max="500" value="20" step="1">
-                    <span class="calc-hint">Average: 20-30 items per year</span>
+                <div class="calc-mode-toggle">
+                    <button class="calc-mode-btn active" data-mode="simple">Simple</button>
+                    <button class="calc-mode-btn" data-mode="detailed">Detailed</button>
                 </div>
                 
-                <div class="calc-input-group">
-                    <label for="material-type">Primary material type</label>
-                    <select id="material-type">
-                        <option value="cotton">Cotton</option>
-                        <option value="polyester">Polyester</option>
-                        <option value="viscose">Viscose</option>
-                        <option value="mixed">Mixed (average)</option>
-                    </select>
+                <!-- Simple Mode -->
+                <div id="simple-mode" class="calc-mode-content active">
+                    <div class="calc-input-group">
+                        <label for="items-per-year">How many clothing items do you buy per year?</label>
+                        <input type="number" id="items-per-year" min="0" max="500" value="20" step="1">
+                        <span class="calc-hint">Average: 20-30 items per year</span>
+                    </div>
+                    
+                    <div class="calc-input-group">
+                        <label for="material-type">Primary material type</label>
+                        <select id="material-type">
+                            <option value="cotton">Cotton</option>
+                            <option value="polyester">Polyester</option>
+                            <option value="viscose">Viscose</option>
+                            <option value="mixed">Mixed (average)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Detailed Mode -->
+                <div id="detailed-mode" class="calc-mode-content">
+                    <div class="calc-input-group">
+                        <label for="shirts">T-shirts & Shirts</label>
+                        <input type="number" id="shirts" min="0" max="200" value="0" step="1">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="pants">Pants & Jeans</label>
+                        <input type="number" id="pants" min="0" max="200" value="0" step="1">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="dresses">Dresses & Skirts</label>
+                        <input type="number" id="dresses" min="0" max="200" value="0" step="1">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="shoes">Shoes & Footwear</label>
+                        <input type="number" id="shoes" min="0" max="200" value="0" step="1">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="outerwear">Jackets & Outerwear</label>
+                        <input type="number" id="outerwear" min="0" max="200" value="0" step="1">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="accessories">Accessories (bags, hats, etc.)</label>
+                        <input type="number" id="accessories" min="0" max="200" value="0" step="1">
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="material-type-detailed">Primary material type</label>
+                        <select id="material-type-detailed">
+                            <option value="cotton">Cotton</option>
+                            <option value="polyester">Polyester</option>
+                            <option value="viscose">Viscose</option>
+                            <option value="mixed">Mixed (average)</option>
+                        </select>
+                    </div>
                 </div>
                 
                 <button id="calculate-btn" class="btn-calculate">Calculate My Impact</button>
@@ -92,6 +137,15 @@
             
             <div id="calculator-results" class="calculator-results" style="display: none;">
                 <h3 class="results-title">Your Annual Impact</h3>
+                
+                <!-- Comparison to Average -->
+                <div class="results-comparison-banner" id="comparison-banner">
+                    <div class="comparison-icon">📊</div>
+                    <div class="comparison-text">
+                        <strong id="comparison-title">Compared to average</strong>
+                        <span id="comparison-details"></span>
+                    </div>
+                </div>
                 
                 <div class="results-grid">
                     <div class="result-card">
@@ -276,12 +330,12 @@
                 <h2 class="subheading">What happens to clothes after we throw them away?</h2>
                 <div class="content-with-image">
                     <div class="text-content">
-                        <p class="section-text">
-                            Around 87% of discarded textiles end up in landfills or incinerators. Only a small 
-                            portion is recycled, and most of that is downcycled into lower-quality materials like 
-                            insulation or industrial rags. Synthetic clothes can take decades to centuries to break 
-                            down, releasing microplastics and chemicals as they degrade.
-                        </p>
+                <p class="section-text">
+                    Around 87% of discarded textiles end up in landfills or incinerators. Only a small 
+                    portion is recycled, and most of that is downcycled into lower-quality materials like 
+                    insulation or industrial rags. Synthetic clothes can take decades to centuries to break 
+                    down, releasing microplastics and chemicals as they degrade.
+                </p>
                     </div>
                     <div class="image-content">
                         <img src="{% static 'impact/imgs/landfill.jpg' %}" alt="Textile waste in landfill" class="section-img">
@@ -579,6 +633,27 @@
         const materialSelect = document.getElementById("material-type");
         const resultsDiv = document.getElementById("calculator-results");
         
+        // Mode toggle
+        const modeButtons = document.querySelectorAll('.calc-mode-btn');
+        const simpleMode = document.getElementById('simple-mode');
+        const detailedMode = document.getElementById('detailed-mode');
+        
+        modeButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const mode = this.dataset.mode;
+                modeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (mode === 'simple') {
+                    simpleMode.classList.add('active');
+                    detailedMode.classList.remove('active');
+                } else {
+                    simpleMode.classList.remove('active');
+                    detailedMode.classList.add('active');
+                }
+            });
+        });
+        
         // Impact data per item (approximate averages in kg)
         const impactData = {
             cotton: {
@@ -603,8 +678,21 @@
             }
         };
         
-        // Average weight per clothing item (kg)
+        // Average weight per clothing item type (kg)
+        const itemWeights = {
+            shirts: 0.2,      // 200g average
+            pants: 0.5,       // 500g average
+            dresses: 0.4,    // 400g average
+            shoes: 0.8,      // 800g average
+            outerwear: 0.7,  // 700g average
+            accessories: 0.15 // 150g average
+        };
+        
+        // Average weight per clothing item (kg) - for simple mode
         const avgItemWeight = 0.3; // 300g average per item
+        
+        // Average person buys 25 items per year
+        const averageItemsPerYear = 25;
         
         function formatNumber(num) {
             if (num >= 1000000) {
@@ -645,20 +733,47 @@
         }
         
         function calculateImpact() {
-            const items = parseInt(itemsInput.value) || 0;
-            const material = materialSelect.value;
-            const data = impactData[material];
+            let items = 0;
+            let totalWeight = 0;
+            let material = '';
+            
+            // Check which mode is active
+            const isDetailed = detailedMode.classList.contains('active');
+            
+            if (isDetailed) {
+                // Detailed mode: calculate from item breakdown
+                const itemTypes = ['shirts', 'pants', 'dresses', 'shoes', 'outerwear', 'accessories'];
+                material = document.getElementById('material-type-detailed').value;
+                
+                itemTypes.forEach(type => {
+                    const count = parseInt(document.getElementById(type).value) || 0;
+                    items += count;
+                    totalWeight += count * itemWeights[type];
+                });
+            } else {
+                // Simple mode
+                items = parseInt(itemsInput.value) || 0;
+                material = materialSelect.value;
+                totalWeight = items * avgItemWeight;
+            }
             
             if (items <= 0) {
                 alert("Please enter a valid number of items.");
                 return;
             }
             
+            const data = impactData[material];
+            
             // Calculate impacts
-            const totalWeight = items * avgItemWeight;
             const waterLiters = totalWeight * data.water;
             const co2Kg = totalWeight * data.co2;
             const wasteKg = items * data.waste;
+            
+            // Calculate average person's impact for comparison
+            const avgWeight = averageItemsPerYear * avgItemWeight;
+            const avgWater = avgWeight * data.water;
+            const avgCo2 = avgWeight * data.co2;
+            const avgWaste = averageItemsPerYear * data.waste;
             
             // Show results first
             resultsDiv.style.display = "block";
@@ -696,7 +811,7 @@
                 formatNumber
             );
             
-            // Add comparisons (these can appear immediately or with slight delay)
+            // Add comparisons and average comparison
             setTimeout(() => {
                 const bathtubs = Math.round(waterLiters / 150);
                 document.getElementById("water-comparison").textContent = 
@@ -709,6 +824,47 @@
                 const trashBags = Math.round(wasteKg / 2); // ~2 kg per trash bag
                 document.getElementById("waste-comparison").textContent = 
                     `≈ ${trashBags} trash bags`;
+                
+                // Show comparison to average
+                const comparisonBanner = document.getElementById('comparison-banner');
+                const comparisonDetails = document.getElementById('comparison-details');
+                
+                // Check if dark mode is active
+                const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+                
+                const percentDiff = ((items - averageItemsPerYear) / averageItemsPerYear * 100).toFixed(0);
+                const absPercent = Math.abs(percentDiff);
+                
+                if (items > averageItemsPerYear) {
+                    comparisonDetails.textContent = `You buy ${absPercent}% more items than average. Reducing by ${Math.round(items - averageItemsPerYear)} items could save ${formatNumber((items - averageItemsPerYear) * avgItemWeight * data.water)}L of water.`;
+                    if (isDarkMode) {
+                        comparisonBanner.style.background = 'linear-gradient(135deg, #3d2a2a 0%, #4a2f2f 100%)';
+                        comparisonBanner.style.borderColor = 'rgba(255, 87, 87, 0.3)';
+                    } else {
+                        comparisonBanner.style.background = 'linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%)';
+                        comparisonBanner.style.borderColor = '';
+                    }
+                } else if (items < averageItemsPerYear) {
+                    comparisonDetails.textContent = `You buy ${absPercent}% fewer items than average. Great job! You're saving ${formatNumber((averageItemsPerYear - items) * avgItemWeight * data.water)}L of water compared to average.`;
+                    if (isDarkMode) {
+                        comparisonBanner.style.background = 'linear-gradient(135deg, #2a3d2a 0%, #2f4a2f 100%)';
+                        comparisonBanner.style.borderColor = 'rgba(74, 157, 122, 0.5)';
+                    } else {
+                        comparisonBanner.style.background = 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)';
+                        comparisonBanner.style.borderColor = '';
+                    }
+                } else {
+                    comparisonDetails.textContent = `You're right at the average! Consider reducing by a few items to make an even bigger impact.`;
+                    if (isDarkMode) {
+                        comparisonBanner.style.background = 'linear-gradient(135deg, #3d3d2a 0%, #4a4a2f 100%)';
+                        comparisonBanner.style.borderColor = 'rgba(255, 193, 7, 0.3)';
+                    } else {
+                        comparisonBanner.style.background = 'linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%)';
+                        comparisonBanner.style.borderColor = '';
+                    }
+                }
+                
+                comparisonBanner.style.display = 'flex';
             }, animationDuration);
         }
         
@@ -871,6 +1027,6 @@
             observer.observe(comparisonSection);
         }
     });
-</script>
+    </script>
     
 {% endblock %}

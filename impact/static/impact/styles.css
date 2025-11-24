@@ -1374,6 +1374,43 @@ body {
     margin-bottom: 32px;
 }
 
+/* Mode Toggle */
+.calc-mode-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: var(--bg-alt);
+    padding: 4px;
+    border-radius: var(--radius-md);
+}
+
+.calc-mode-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calc-mode-btn.active {
+    background: var(--surface);
+    color: var(--accent);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calc-mode-content {
+    display: none;
+}
+
+.calc-mode-content.active {
+    display: block;
+}
+
 .calc-input-group {
     margin-bottom: 24px;
 }
@@ -1524,6 +1561,81 @@ body {
     margin: 0;
     color: var(--accent-dark);
     line-height: 1.6;
+}
+
+/* Comparison Banner */
+.results-comparison-banner {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+}
+
+.comparison-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.comparison-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.comparison-text strong {
+    color: var(--accent-dark);
+    font-size: 1rem;
+}
+
+.comparison-text span {
+    color: var(--text-main);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Results Actions (Share/Export) */
+.results-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.btn-share {
+    flex: 1;
+    padding: 12px 20px;
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-share:hover {
+    background: var(--accent);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.25);
+}
+
+.btn-share:active {
+    transform: translateY(0);
+}
+
+.btn-share span {
+    font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
@@ -1810,4 +1922,45 @@ body {
 
 [data-theme="dark"] .nav-cta:hover {
     background: var(--accent-dark);
+}
+
+[data-theme="dark"] .calc-mode-toggle {
+    background: #2d2d2d;
+}
+
+[data-theme="dark"] .calc-mode-btn.active {
+    background: #1a1a1a;
+    color: var(--accent);
+}
+
+[data-theme="dark"] .results-comparison-banner {
+    background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%);
+    border: 1px solid rgba(74, 157, 122, 0.3);
+}
+
+[data-theme="dark"] .comparison-text strong {
+    color: var(--accent);
+}
+
+[data-theme="dark"] .comparison-text span {
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .comparison-icon {
+    filter: brightness(1.2);
+}
+
+[data-theme="dark"] .btn-share {
+    background: #2d2d2d;
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+[data-theme="dark"] .btn-share:hover {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .results-actions {
+    border-top-color: rgba(255, 255, 255, 0.1);
 }
