@@ -23,6 +23,11 @@ static/
 .env.local
 *.env
 
+# === AWS DEPLOYMENT ===
+# Elastic Beanstalk local config (contains credentials)
+.elasticbeanstalk/
+# Keep .ebextensions/ - those are deployment configs that should be committed
+
 # Django secret keys / settings overrides
 settings_local.py
 local_settings.py

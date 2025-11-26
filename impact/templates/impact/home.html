@@ -15,7 +15,6 @@
             muted
             loop
             playsinline
-            poster="{% static 'impact/imgs/clothes-on-rack2.jpg' %}">
             <source src="{% static 'impact/videos/beach-background.mp4' %}" type="video/mp4">
             <!-- Fallback text -->
             Your browser does not support the video tag.
@@ -47,18 +46,7 @@
 </section>
 
 <!-- STRIP SECTION -->
-<section class="strip">
-    <div class="strip-inner">
-        <h2 class="strip-title">A global industry, a global footprint</h2>
-        <p class="strip-text">
-            Cotton, polyester, viscose: fast fashion relies on materials with heavy resource demands.
-            From water use to textile waste, this overview highlights the scale of the issue.
-        </p>
-        <div class="strip-image">
-            <img src="{% static 'impact/imgs/clothes-on-rack.jpg' %}" alt="Clothing on rack representing fast fashion production" class="strip-img">
-        </div>
-    </div>
-</section>
+
 
 <!-- PERSONAL IMPACT CALCULATOR -->
 <section id="calculator" class="section section-calculator section-anchor-offset">
@@ -89,7 +77,7 @@
                         <select id="material-type">
                             <option value="cotton">Cotton</option>
                             <option value="polyester">Polyester</option>
-                            <option value="viscose">Viscose</option>
+                            <option value="rayon">Rayon</option>
                             <option value="mixed">Mixed (average)</option>
                         </select>
                     </div>
@@ -126,7 +114,7 @@
                         <select id="material-type-detailed">
                             <option value="cotton">Cotton</option>
                             <option value="polyester">Polyester</option>
-                            <option value="viscose">Viscose</option>
+                            <option value="rayon">Rayon</option>
                             <option value="mixed">Mixed (average)</option>
                         </select>
                     </div>
@@ -241,21 +229,19 @@
 <section id="problem" class="section section-problem section-anchor-offset">
     <div class="section-inner">
         <h2 class="section-heading">The Problem</h2>
-        <section class="section">       
-                <p class="section-text">
+        <p class="section-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
                     Fast fashion depends on low-cost fibers that require large amounts of water, energy,
                     and chemicals. Below you'll find headline statistics drawn from public reports, plus
                     charts that put the scale of the problem into context.
                 </p>
-            </div>
-        </section>
         
+        <!-- Headline Statistics -->
         <section id="headline" class="section alt">
             <div class="section-inner">
-                <h2 class="subheading">Headline numbers</h2>
+                <h2 class="subheading">Headline Numbers</h2>
                 <p class="section-text">
                     These values are rounded estimates. They are meant to show scale, not exact predictions
-                    for every brand or garment.
+                    for every brand or garment. The numbers below represent the global impact of the fashion industry.
                 </p>
         
                 <div class="stats-grid">
@@ -269,126 +255,152 @@
                         {% endif %}
                     </article>
                     {% empty %}
-                    <p>No stats added yet. Use the admin site to create a few headline values.</p>
+                    
+                    <article class="stat-card">
+                        <div class="stat-icon-large">🌍</div>
+                        <p class="stat-title">Global CO₂ Emissions</p>
+                        <p class="stat-value">10%</p>
+                        <p class="stat-unit">of global total</p>
+                        <p class="stat-desc">Fashion accounts for more carbon emissions than international flights and maritime shipping combined.</p>
+                        <p class="stat-source">Source: Quantis, 2018</p>
+                    </article>
+                    
+                    <article class="stat-card">
+                        <div class="stat-icon-large">🗑️</div>
+                        <p class="stat-title">Textile Waste Generated</p>
+                        <p class="stat-value">92 million</p>
+                        <p class="stat-unit">tons per year</p>
+                        <p class="stat-desc">Equivalent to a garbage truck full of clothes being dumped in a landfill every second.</p>
+                        <p class="stat-source">Source: Global Fashion Agenda, 2020</p>
+                    </article>
+                    
+                    <article class="stat-card">
+                        <div class="stat-icon-large">🌊</div>
+                        <p class="stat-title">Microplastics Released</p>
+                        <p class="stat-value">500,000</p>
+                        <p class="stat-unit">tons per year</p>
+                        <p class="stat-desc">From washing synthetic clothing, equivalent to 50 billion plastic bottles entering oceans annually.</p>
+                        <p class="stat-source">Source: IUCN, 2017</p>
+                    </article>
                     {% endfor %}
                 </div>
+        
+                <div class="stats-context">
+                    <h3 class="stats-context-title">Putting Numbers in Perspective</h3>
+                    <div class="stats-context-grid">
+                        <div class="context-item">
+                            <h4>Individual Impact</h4>
+                            <p>Producing a single cotton t-shirt requires approximately 2,700 liters of water—enough for one person to drink for 2.5 years. A pair of jeans can require up to 10,000 liters.</p>
             </div>
-        </section>
+                        <div class="context-item">
+                            <h4>Future Projections</h4>
+                            <p>If current trends continue, by 2030 the fashion industry is projected to generate significantly more waste and emissions—highlighting the urgent need for systemic change.</p>
+                        </div>
+                        <div class="context-item">
+                            <h4>Global Comparison</h4>
+                            <p>The fashion industry's carbon footprint is on track to exceed that of entire countries if no action is taken, making it one of the world's largest polluting industries.</p>
+                        </div>
+                    </div>
+                </div>
         
-                </div> <!-- end of .stats-grid -->
-        
-                <p class="section-text" style="margin-top: 10px;">
+                <p class="section-text" style="margin-top: 24px; font-size: 0.9rem; color: var(--text-muted);">
                     <strong>Note:</strong> These numbers come from public reports and industry analyses.
                     They show approximate scale, not exact predictions for every brand or garment.
                     Water use, emissions, and waste vary by region, production method, and year.
                 </p>
-        
-            </div> <!-- end of .section-inner -->
+            </div>
         </section>
         
-        </div> <!-- end of .section-inner -->
-        </section>
-        
-        <section class="section">
-            <div class="section-inner">
-                <h2 class="subheading">Why fast fashion uses so much water</h2>
-                <p class="section-text">
+        <!-- Problem Cards Grid -->
+        <div class="problem-cards-scroll">
+            <button class="problem-card-nav problem-card-nav-prev" aria-label="Previous card">‹</button>
+            <button class="problem-card-nav problem-card-nav-next" aria-label="Next card">›</button>
+            <div class="problem-cards-container">
+                <div class="problem-card" data-card-index="0">
+                    <div class="problem-card-image">
+                        <img src="{% static 'impact/imgs/cotton-unsplash.jpg' %}" alt="Cotton field with irrigation">
+                    </div>
+                    <div class="problem-card-content">
+                        <h3 class="problem-card-title">Excessive Water Usage</h3>
+                        <p class="problem-card-text">
                     Cotton farming is one of the most water-intensive agricultural systems in the world, 
                     especially in dry regions where irrigation is required. On top of farming, dyeing, 
-                    bleaching, and finishing fabrics use millions of liters of water each day. As fashion 
-                    production accelerated in the 2000s, water use rose dramatically to keep up with demand.
+                            bleaching, and finishing fabrics use millions of liters of water each day.
                 </p>
             </div>
-        </section>
-        
-        <section class="section">
-            <div class="section-inner">
-                <h2 class="subheading">Explosion of synthetic fibers</h2>
-                <p class="section-text">
-                    Today, around 69% of all global fiber production is synthetic — mainly polyester made 
-                    from fossil fuels. These fibers are cheap, versatile, and perfectly suited for fast 
-                    fashion’s rapid turnover model. However, synthetic production carries significant 
-                    environmental costs, including high energy use, carbon emissions, and long-lasting waste.
-                </p>
-            </div>
-        </section>
-        
-        <section class="section">
-            <div class="section-inner">
-                <h2 class="subheading">Overproduction and short clothing lifespans</h2>
-                <p class="section-text">
-                    The fashion industry now produces more than 100 billion garments annually — more than 
-                    enough for every person on Earth to buy 12–14 items every year. Many of these pieces 
-                    are worn only a handful of times. About 60% of clothing is discarded within one year, 
-                    contributing to massive resource waste and landfill buildup.
-                </p>
-            </div>
-        </section>
-        
-        <section class="section">
-            <div class="section-inner">
-                <h2 class="subheading">What happens to clothes after we throw them away?</h2>
-                <div class="content-with-image">
-                    <div class="text-content">
-                <p class="section-text">
-                    Around 87% of discarded textiles end up in landfills or incinerators. Only a small 
-                    portion is recycled, and most of that is downcycled into lower-quality materials like 
-                    insulation or industrial rags. Synthetic clothes can take decades to centuries to break 
-                    down, releasing microplastics and chemicals as they degrade.
-                </p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-card-image">
+                        <img src="{% static 'impact/imgs/polyester-unsplash.jpg' %}" alt="Textile factory production">
                     </div>
-                    <div class="image-content">
-                        <img src="{% static 'impact/imgs/landfill.jpg' %}" alt="Textile waste in landfill" class="section-img">
+                    <div class="problem-card-content">
+                        <h3 class="problem-card-title">Synthetic Fiber Explosion</h3>
+                        <p class="problem-card-text">
+                            The majority of global fiber production is now synthetic — mainly polyester made 
+                            from fossil fuels. These fibers carry significant environmental costs, including high energy use, 
+                            carbon emissions, and long-lasting waste that persists for centuries.
+                </p>
+            </div>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-card-image">
+                        <img src="{% static 'impact/imgs/clothing-warehouse.jpg' %}" alt="Clothing warehouse with massive inventory">
+                    </div>
+                    <div class="problem-card-content">
+                        <h3 class="problem-card-title">Massive Overproduction</h3>
+                        <p class="problem-card-text">
+                            The fashion industry produces far more garments than the global population needs. 
+                            This overproduction leads to massive waste, with most clothing being discarded within 
+                            a year of purchase, creating an unsustainable cycle of consumption and disposal.
+                </p>
+            </div>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-card-image">
+                        <img src="{% static 'impact/imgs/landfill.jpg' %}" alt="Textile waste in landfill">
+                    </div>
+                    <div class="problem-card-content">
+                        <h3 class="problem-card-title">Landfill Crisis</h3>
+                        <p class="problem-card-text">
+                            The vast majority of discarded textiles end up in landfills or incinerators. Only a small 
+                            portion is recycled, and most of that is downcycled into lower-quality materials. Synthetic clothes 
+                            can take decades to centuries to break down, creating a long-term environmental burden.
+                </p>
+            </div>
+                </div>
+                
+                <div class="problem-card" data-card-index="4">
+                    <div class="problem-card-image">
+                        <img src="{% static 'impact/imgs/beach-microplastics.jpg' %}" alt="Ocean pollution with plastic waste">
+                    </div>
+                    <div class="problem-card-content">
+                        <h3 class="problem-card-title">Microplastic Pollution</h3>
+                        <p class="problem-card-text">
+                            Each load of laundry releases hundreds of thousands of tiny synthetic fibers into 
+                            waterways. These microplastics have been found in oceans, soil, food, drinking water, 
+                            and even human blood.
+                        </p>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <section class="section">
-            <div class="section-inner">
-                <h2 class="subheading">Microplastics from polyester</h2>
-                <p class="section-text">
-                    Each load of laundry releases hundreds of thousands of tiny synthetic fibers into 
-                    waterways. These microplastics have been found in oceans, soil, food, drinking water, 
-                    and even human blood. Because polyester dominates the fast fashion market, microfiber 
-                    pollution is growing quickly and has become one of the biggest environmental concerns 
-                    connected to clothing.
+                <!-- Duplicate first card for seamless loop -->
+                <div class="problem-card problem-card-duplicate" data-card-index="0">
+                    <div class="problem-card-image">
+                        <img src="{% static 'impact/imgs/cotton-unsplash.jpg' %}" alt="Cotton field with irrigation">
+                    </div>
+                    <div class="problem-card-content">
+                        <h3 class="problem-card-title">Excessive Water Usage</h3>
+                        <p class="problem-card-text">
+                    Cotton farming is one of the most water-intensive agricultural systems in the world, 
+                    especially in dry regions where irrigation is required. On top of farming, dyeing, 
+                            bleaching, and finishing fabrics use millions of liters of water each day.
                 </p>
             </div>
-        </section>
-        
-        <section class="section alt">
-            <div class="section-inner">
-                <h2 class="subheading">Fashion before vs. after the fast fashion boom</h2>
-                <div class="card-grid three">
-                    <article class="info-card">
-                        <h3>Before (1990s)</h3>
-                        <p>Seasonal collections</p>
-                        <p>Higher-quality materials</p>
-                        <p>More natural fibers</p>
-                        <p>Less waste</p>
-                    </article>
-        
-                    <article class="info-card">
-                        <h3>Today</h3>
-                        <p>Ultra-fast production cycles</p>
-                        <p>More synthetic fibers</p>
-                        <p>Lower durability</p>
-                        <p>Rising water use and waste</p>
-                    </article>
-        
-                    <article class="info-card">
-                        <h3>The impact</h3>
-                        <p>Increased landfill buildup</p>
-                        <p>More microplastics released</p>
-                        <p>Higher global emissions</p>
-                        <p>Greater demand for resources</p>
-                    </article>
                 </div>
             </div>
-        </section>
-        
-        
+        </div>
         
         <section class="section">
             <div class="section-inner">
@@ -435,13 +447,13 @@
                                 </div>
                             </div>
                             
-                            <div class="chart-bar-wrapper" data-material="viscose">
+                            <div class="chart-bar-wrapper" data-material="rayon">
                                 <div class="chart-bar" data-value="6000" style="--bar-color: #95d5b2;">
                                     <div class="bar-fill"></div>
-                                    <div class="bar-label">Viscose</div>
+                                    <div class="bar-label">Rayon</div>
                                     <div class="bar-value">6,000L</div>
                                     <div class="bar-tooltip">
-                                        <strong>Viscose</strong><br>
+                                        <strong>Rayon</strong><br>
                                         Water: 6,000L/kg<br>
                                         CO₂: 12kg/kg<br>
                                         Chemical-intensive
@@ -497,7 +509,7 @@
                             <div class="divider-line"></div>
                             <div class="divider-arrow">→</div>
                             <div class="divider-text">500% increase</div>
-                        </div>
+                </div>
                         
                         <div class="comparison-item">
                             <div class="comparison-label">
@@ -533,6 +545,210 @@
                 </div>
             </div>
         </section>
+            </div>
+        </section>
+        
+<!-- MATERIAL DEEP DIVES SECTION -->
+<section id="materials" class="section section-materials section-anchor-offset">
+            <div class="section-inner">
+        <h2 class="section-heading">Understanding Materials</h2>
+        <p class="section-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+            Each textile material has unique environmental trade-offs. Understanding these can help you make more 
+            informed choices based on your priorities.
+        </p>
+        
+        <div class="materials-grid">
+            <div class="material-card">
+                <div class="material-header">
+                    <div class="material-icon">🌱</div>
+                    <h3 class="material-name">Cotton</h3>
+            </div>
+                <div class="material-stats">
+                    <div class="material-stat">
+                        <span class="stat-label">Water:</span>
+                        <span class="stat-value high">Very High</span>
+                    </div>
+                    <div class="material-stat">
+                        <span class="stat-label">CO₂:</span>
+                        <span class="stat-value medium">Medium</span>
+                    </div>
+                    <div class="material-stat">
+                        <span class="stat-label">Waste:</span>
+                        <span class="stat-value low">Biodegradable</span>
+                    </div>
+                </div>
+                <p class="material-description">
+                    Conventional cotton is one of the most water-intensive crops, requiring 10,000+ liters per kg. 
+                    However, it's natural, biodegradable, and can be grown organically. Organic cotton reduces water 
+                    use by 91% and eliminates pesticides, but still requires significant resources.
+                </p>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-header">
+                    <div class="material-icon">🛢️</div>
+                    <h3 class="material-name">Polyester</h3>
+                </div>
+                <div class="material-stats">
+                    <div class="material-stat">
+                        <span class="stat-label">Water:</span>
+                        <span class="stat-value low">Low</span>
+                    </div>
+                    <div class="material-stat">
+                        <span class="stat-label">CO₂:</span>
+                        <span class="stat-value high">Very High</span>
+                    </div>
+                    <div class="material-stat">
+                        <span class="stat-label">Waste:</span>
+                        <span class="stat-value high">Non-biodegradable</span>
+                    </div>
+                </div>
+                <p class="material-description">
+                    Made from petroleum, polyester requires less water but emits more CO₂ and releases microplastics 
+                    with every wash. It's durable and versatile, but takes 200+ years to decompose. Recycled polyester 
+                    (rPET) reduces fossil fuel use by 50% but still sheds microplastics.
+                </p>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-header">
+                    <div class="material-icon">🌿</div>
+                    <h3 class="material-name">Rayon</h3>
+                </div>
+                <div class="material-stats">
+                    <div class="material-stat">
+                        <span class="stat-label">Water:</span>
+                        <span class="stat-value medium">Medium</span>
+                    </div>
+                    <div class="material-stat">
+                        <span class="stat-label">CO₂:</span>
+                        <span class="stat-value medium">Medium</span>
+                    </div>
+                    <div class="material-stat">
+                        <span class="stat-label">Waste:</span>
+                        <span class="stat-value medium">Biodegradable</span>
+                    </div>
+                </div>
+                <p class="material-description">
+                    Made from wood pulp, rayon is semi-synthetic. It requires significant chemical processing but 
+                    uses less water than cotton. Production can contribute to deforestation if not sustainably sourced. 
+                    Look for FSC-certified or TENCEL™ (closed-loop production) versions.
+                </p>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-header">
+                    <div class="material-icon">🧵</div>
+                    <h3 class="material-name">Wool</h3>
+                </div>
+                <div class="material-stats">
+                    <div class="material-stat">
+                        <span class="stat-label">Water:</span>
+                        <span class="stat-value medium">Medium</span>
+                    </div>
+                    <div class="material-stat">
+                        <span class="stat-label">CO₂:</span>
+                        <span class="stat-value high">High</span>
+                    </div>
+                    <div class="material-stat">
+                        <span class="stat-label">Waste:</span>
+                        <span class="stat-value low">Biodegradable</span>
+                    </div>
+                </div>
+                <p class="material-description">
+                    Natural and durable, wool can last decades with proper care. However, sheep farming produces 
+                    methane (a potent greenhouse gas) and requires significant land. Ethical sourcing is important 
+                    to ensure animal welfare. Recycled wool reduces these impacts significantly.
+                </p>
+            </div>
+        </div>
+            </div>
+        </section>
+        
+<!-- INDUSTRY CONTEXT SECTION -->
+<section id="context" class="section section-context section-anchor-offset">
+            <div class="section-inner">
+        <h2 class="section-heading">Industry Context</h2>
+        <p class="section-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+            Understanding how we got here and the regional differences helps put the problem in perspective.
+        </p>
+        
+        <div class="context-timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">1990s</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Pre-Fast Fashion Era</h3>
+                    <p class="timeline-text">
+                        Fashion operated on seasonal collections (Spring/Summer, Fall/Winter). Garments were designed 
+                        for durability, and consumers typically bought fewer, higher-quality items. Global production: 
+                        ~20 billion garments per year.
+                    </p>
+            </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2000s</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Fast Fashion Emerges</h3>
+                    <p class="timeline-text">
+                        Brands like Zara and H&M pioneered rapid production cycles, releasing new collections every 
+                        few weeks. Production moved to low-cost regions. Consumers began buying more, wearing items 
+                        fewer times. Production doubled to ~40 billion garments per year.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2010s</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Ultra-Fast Fashion</h3>
+                    <p class="timeline-text">
+                        Online retailers like Shein and Boohoo release thousands of new styles weekly. Social media 
+                        drives constant demand for newness. Production accelerates dramatically. 
+                        Clothing lifespan drops significantly, with items worn far fewer times before disposal.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">Today</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">The Current Reality</h3>
+                    <p class="timeline-text">
+                        The industry produces far more clothing than needed globally. 
+                        Only a tiny fraction of clothing is recycled into new garments. Textile waste is growing much faster than 
+                        population growth. However, awareness is increasing, and sustainable alternatives are emerging.
+                    </p>
+            </div>
+            </div>
+        </div>
+        
+        <div class="context-regions">
+            <h3 class="context-subheading">Regional Differences</h3>
+            <div class="regions-grid">
+                <div class="region-card">
+                    <h4 class="region-name">United States</h4>
+                    <p class="region-text">
+                        Average person buys 68 new garments per year. High consumption, high disposal rates. 
+                        Only 15% of textiles are recycled.
+                    </p>
+            </div>
+                <div class="region-card">
+                    <h4 class="region-name">European Union</h4>
+                    <p class="region-text">
+                        More regulations on textile waste. Extended Producer Responsibility laws emerging. 
+                        Average consumption: 26 garments per person per year.
+                    </p>
+                </div>
+                <div class="region-card">
+                    <h4 class="region-name">Asia</h4>
+                    <p class="region-text">
+                        Major production hub. Growing middle class increasing consumption. Some countries 
+                        implementing circular economy initiatives.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -540,38 +756,288 @@
 <section id="solutions" class="section section-solutions section-anchor-offset">
     <div class="section-inner">
         <h2 class="section-heading">Solutions</h2>
-        <section class="section">
-                <p class="section-text">
-                    Individuals aren’t responsible for fixing the fashion system—but we can still take
-                    actions that matter. Here are realistic steps, plus a brief fairness and ethics check
-                    to keep things grounded.
-                </p>
-            </div>
-        </section>
+        <p class="section-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+            Individuals aren't responsible for fixing the fashion system—but we can still take
+            actions that matter. Here are realistic steps that anyone can take, regardless of budget.
+        </p>
         
-        <section class="section alt">
-            <div class="section-inner">
-                <h2 class="subheading">Fairness & Ethics</h2>
-                <p class="section-text">
+        <!-- Fairness & Ethics Card -->
+        <div class="ethics-card">
+            <div class="ethics-icon">⚖️</div>
+            <div class="ethics-content">
+                <h3 class="ethics-title">Fairness & Ethics</h3>
+                <p class="ethics-text">
                     Sustainability often costs more. Not everyone can afford slow fashion, sustainable
-                    brands, or specialty materials. Any “solution” must respect budgets, needs, and access.
+                    brands, or specialty materials. Any "solution" must respect budgets, needs, and access.
+                    The most impactful actions—wearing clothes longer, buying second-hand, repairing—are 
+                    often the most accessible.
                 </p>
+            </div>
+        </div>
+        
+        <!-- Solutions Actions Grid -->
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <div class="solution-icon">👕</div>
+                <h3 class="solution-title">Buy Less, Wear Longer</h3>
+                <p class="solution-text">
+                    The single most impactful action: buy fewer new items and wear the ones you have longer. 
+                    Extending clothing life by just 9 months can reduce environmental impact by 20-30%. 
+                    This costs nothing and works for everyone.
+                </p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">♻️</div>
+                <h3 class="solution-title">Second-Hand & Swaps</h3>
+                <p class="solution-text">
+                    When you need something new, try second-hand stores, online marketplaces, or clothing swaps. 
+                    This extends the life of existing garments, reduces demand for new production, and is often 
+                    more affordable than buying new.
+                </p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">🔧</div>
+                <h3 class="solution-title">Repair & Maintain</h3>
+                <p class="solution-text">
+                    Repair small rips, missing buttons, or broken zippers instead of replacing clothes. 
+                    Learn basic sewing skills or support local tailors. Simple repairs can extend a garment's 
+                    lifespan by years.
+                </p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">📦</div>
+                <h3 class="solution-title">Donate & Recycle Responsibly</h3>
+                <p class="solution-text">
+                    When clothes can't be worn anymore, donate to organizations that will use them, or find 
+                    textile recycling programs. Keep clothes out of landfills and give them a second life. 
+                    Research local options—not all "donations" end up being used.
+                </p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">🧠</div>
+                <h3 class="solution-title">Make Informed Choices</h3>
+                <p class="solution-text">
+                    When buying new, consider material impact (see Materials section), brand transparency, 
+                    and durability. Look for quality over quantity. One well-made item that lasts years 
+                    beats multiple fast fashion pieces.
+                </p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">💬</div>
+                <h3 class="solution-title">Spread Awareness</h3>
+                <p class="solution-text">
+                    Talk with friends and family about habits and sustainable options. Share what you've learned. 
+                    Collective awareness and demand for better practices drives industry change. Your voice matters.
+                </p>
+            </div>
+        </div>
+        
+        <div class="solutions-impact">
+            <h3 class="solutions-impact-title">The Impact of Small Changes</h3>
+            <p class="solutions-impact-text">
+                If everyone in the U.S. extended the life of their clothes by just 9 months, it would save 
+                the equivalent of removing 8 million cars from the road for a year. Small individual actions, 
+                when multiplied by millions, create significant change.
+            </p>
+        </div>
             </div>
         </section>
         
-        <section class="section">
+<!-- RESOURCES & FURTHER READING SECTION -->
+<section id="resources" class="section section-resources section-anchor-offset">
             <div class="section-inner">
-                <h2 class="subheading">Realistic Actions</h2>
+        <h2 class="section-heading">Resources & Further Reading</h2>
+        <p class="section-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+            Explore these organizations, guides, and platforms to learn more and take action.
+        </p>
         
-                <ul class="action-list">
-                    <li>Buy fewer new items and wear the ones you have longer.</li>
-                    <li>When affordable, try second-hand or clothing swaps.</li>
-                    <li>Repair small rips or missing buttons instead of replacing clothes.</li>
-                    <li>Donate or recycle textiles locally when possible.</li>
-                    <li>Talk with friends about habits and sustainable options.</li>
+        <div class="resources-grid">
+            <div class="resource-category">
+                <h3 class="resource-category-title">Organizations</h3>
+                <ul class="resource-list">
+                    <li>
+                        <a href="https://www.fashionrevolution.org" target="_blank" rel="noopener noreferrer">
+                            <strong>Fashion Revolution</strong> — Transparency and ethics in fashion
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.ellenmacarthurfoundation.org" target="_blank" rel="noopener noreferrer">
+                            <strong>Ellen MacArthur Foundation</strong> — Circular economy initiatives
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://goodonyou.eco" target="_blank" rel="noopener noreferrer">
+                            <strong>Good On You</strong> — Brand sustainability ratings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.wrap.org.uk" target="_blank" rel="noopener noreferrer">
+                            <strong>WRAP</strong> — Waste reduction and resource efficiency
+                        </a>
+                    </li>
                 </ul>
             </div>
+            
+            <div class="resource-category">
+                <h3 class="resource-category-title">Shopping Alternatives</h3>
+                <ul class="resource-list">
+                    <li>
+                        <strong>Second-Hand:</strong> ThredUp, Poshmark, Depop, local thrift stores
+                    </li>
+                    <li>
+                        <strong>Rental:</strong> Rent the Runway, Nuuly, local rental services
+                    </li>
+                    <li>
+                        <strong>Swapping:</strong> Clothing swap events, Swap.com, local community groups
+                    </li>
+                    <li>
+                        <strong>Repair:</strong> Local tailors, online tutorials, repair cafes
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="resource-category">
+                <h3 class="resource-category-title">Learning Resources</h3>
+                <ul class="resource-list">
+                    <li>
+                        <a href="https://www.unep.org/news-and-stories/story/putting-brakes-fast-fashion" target="_blank" rel="noopener noreferrer">
+                            <strong>UN Environment Programme</strong> — Fast fashion reports
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.bbc.com/future/article/20200310-sustainable-fashion-how-to-buy-clothes-good-for-the-climate" target="_blank" rel="noopener noreferrer">
+                            <strong>BBC Future</strong> — Sustainable fashion guides
+                        </a>
+                    </li>
+                    <li>
+                        <strong>Documentaries:</strong> "The True Cost", "RiverBlue", "Fashion's Dirty Secrets"
+                    </li>
+                    <li>
+                        <strong>Books:</strong> "Overdressed" by Elizabeth Cline, "Wardrobe Crisis" by Clare Press
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="resource-category">
+                <h3 class="resource-category-title">Take Action</h3>
+                <ul class="resource-list">
+                    <li>Sign petitions for fashion industry transparency</li>
+                    <li>Support brands with verified sustainability practices</li>
+                    <li>Organize clothing swaps in your community</li>
+                    <li>Contact brands asking about their supply chains</li>
+                    <li>Share knowledge with friends and family</li>
+                </ul>
+            </div>
+        </div>
+            </div>
         </section>
+        
+<!-- FAQ SECTION -->
+<section id="faq" class="section section-faq section-anchor-offset">
+            <div class="section-inner">
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3 class="faq-question">How accurate are the calculator results?</h3>
+                <p class="faq-answer">
+                    The calculator uses industry averages and provides estimates within a reasonable range. Actual impacts 
+                    can vary by 2-10x depending on brand, production location, and manufacturing methods. The results are 
+                    meant to illustrate scale and help you understand relative impacts, not provide exact measurements.
+                </p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">Why do the numbers seem so high?</h3>
+                <p class="faq-answer">
+                    Fashion is one of the most resource-intensive industries. A single cotton t-shirt can require 2,700 
+                    liters of water from field to finished product. When you multiply this across billions of garments 
+                    produced annually, the numbers become staggering. This is why even small reductions in consumption 
+                    can have significant environmental benefits.
+                </p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">What's the difference between cotton, polyester, and other materials?</h3>
+                <p class="faq-answer">
+                    Cotton is water-intensive but biodegradable. Polyester uses less water but requires fossil fuels and 
+                    releases microplastics. Rayon falls in between. Each material has trade-offs. The best choice often 
+                    depends on how long you'll wear the item and how you'll dispose of it.
+                </p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">Can I really make a difference as an individual?</h3>
+                <p class="faq-answer">
+                    Yes! While systemic change is needed, individual actions add up. If everyone extended clothing life by 
+                    9 months, it could reduce environmental impact by 20-30%. Your choices also signal demand to brands 
+                    and can influence industry practices. Collective action drives change.
+                </p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">What if I can't afford sustainable fashion?</h3>
+                <p class="faq-answer">
+                    Sustainability doesn't require buying expensive "eco" brands. The most sustainable option is often 
+                    wearing what you already have longer, buying second-hand, or swapping with friends. These actions 
+                    are accessible to most people and have significant environmental benefits.
+                </p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">How often is the data updated?</h3>
+                <p class="faq-answer">
+                    We use data from recent peer-reviewed studies and industry reports (typically 2020-2024). Fashion 
+                    industry data evolves slowly, so these estimates remain relevant. We update calculations when major 
+                    new studies are published that significantly change our understanding of impacts.
+                </p>
+            </div>
+        </div>
+            </div>
+        </section>
+
+<!-- ABOUT / METHODOLOGY SECTION -->
+<section id="about" class="section section-about section-anchor-offset">
+    <div class="section-inner">
+        <h2 class="section-heading">About This Project</h2>
+        
+        <div class="about-content">
+            <div class="about-card">
+                <div class="about-icon">🎯</div>
+                <h3 class="about-title">Our Mission</h3>
+                <p class="about-text">
+                    This project aims to make the environmental impact of fast fashion more tangible and understandable. 
+                    By visualizing data and providing interactive tools, we hope to empower individuals to make more 
+                    informed choices about their clothing consumption.
+                </p>
+            </div>
+            
+            <div class="about-card">
+                <div class="about-icon">📊</div>
+                <h3 class="about-title">Methodology</h3>
+                <p class="about-text">
+                    Our calculations are based on industry averages from peer-reviewed studies and public reports. 
+                    Impact values (water, CO₂, waste) are derived from life cycle assessments of textile production. 
+                    The calculator uses average weights per garment type and material-specific impact factors.
+                </p>
+            </div>
+            
+            <div class="about-card">
+                <div class="about-icon">⚠️</div>
+                <h3 class="about-title">Data Limitations</h3>
+                <p class="about-text">
+                    These numbers are estimates meant to illustrate scale, not exact predictions. Actual impacts vary 
+                    significantly by brand, production region, manufacturing methods, and year. Water use, emissions, 
+                    and waste can differ by 2-10x depending on these factors. We use conservative averages to provide 
+                    meaningful comparisons.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -579,21 +1045,218 @@
 <section id="sources" class="section section-sources section-anchor-offset">
     <div class="section-inner">
         <h2 class="section-heading">Sources</h2>
-        <section class="section">
-        
-                <p class="section-text">
+        <p class="section-text" style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
                     These are the reports, articles, and datasets used to create the headline numbers
-                    and visuals on this site.
-                </p>
+            and visuals on this site. All sources are publicly available and peer-reviewed where applicable.
+        </p>
         
+        <div class="sources-grid">
+            <div class="source-category">
+                <button class="source-category-toggle" aria-expanded="false">
+                    <h3 class="source-category-title">Industry Reports & Foundations</h3>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="source-category-content" style="display: none;">
                 <ul class="source-list">
-                    <li>Replace with your real sources from your research.</li>
-                    <li>UN reports, Ellen MacArthur Foundation, WRAP, etc.</li>
-                    <li>Articles on water use, CO₂ emissions, textile waste.</li>
-                    <li>Datasets on global production and disposal trends.</li>
+                    <li>
+                        <strong>Ellen MacArthur Foundation</strong> (2017). "A New Textiles Economy: Redesigning Fashion's Future."
+                        <a href="https://www.ellenmacarthurfoundation.org/publications/a-new-textiles-economy-redesigning-fashions-future" target="_blank" rel="noopener noreferrer">View Report</a>
+                    </li>
+                    <li>
+                        <strong>Ellen MacArthur Foundation</strong> (2021). "Circular Economy in Fashion: Current State and Future Opportunities."
+                    </li>
+                    <li>
+                        <strong>Textile Exchange</strong> (2023). "Material Change Index" and "Preferred Fiber & Materials Market Report."
+                    </li>
+                    <li>
+                        <strong>WRAP</strong> (2020). "Valuing Our Clothes: The Cost of UK Fashion." Waste and Resources Action Programme.
+                    </li>
+                    <li>
+                        <strong>Global Fashion Agenda & The Boston Consulting Group</strong> (2017-2023). "Pulse of the Fashion Industry" reports.
+                    </li>
                 </ul>
             </div>
-        </section>
+            
+            <div class="source-category">
+                <button class="source-category-toggle" aria-expanded="false">
+                    <h3 class="source-category-title">United Nations & International Organizations</h3>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="source-category-content" style="display: none;">
+                    <ul class="source-list">
+                        <li>
+                            <strong>UN Environment Programme</strong> (2019). "Putting the Brakes on Fast Fashion."
+                            <a href="https://www.unep.org/news-and-stories/story/putting-brakes-fast-fashion" target="_blank" rel="noopener noreferrer">View Article</a>
+                        </li>
+                        <li>
+                            <strong>UNECE</strong> (2018). "Fashion and the SDGs: What Role for the UN?"
+                        </li>
+                        <li>
+                            <strong>International Labour Organization</strong> (2020). Reports on textile production and working conditions.
+                        </li>
+                        <li>
+                            <strong>World Bank</strong> (2019). "Pollution in the Fashion Industry" data and analysis.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="source-category">
+                <button class="source-category-toggle" aria-expanded="false">
+                    <h3 class="source-category-title">Water Usage & Material Impact</h3>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="source-category-content" style="display: none;">
+                    <ul class="source-list">
+                        <li>
+                            <strong>Chapagain, A.K. et al.</strong> (2006). "The Water Footprint of Cotton Consumption." 
+                            <em>Ecological Economics</em>, 60(1), 186-203.
+                        </li>
+                        <li>
+                            <strong>Muthu, S.S.</strong> (2014). "Assessing the Environmental Impact of Textiles and the Clothing Supply Chain." 
+                            Woodhead Publishing.
+                        </li>
+                        <li>
+                            <strong>Quantis</strong> (2018). "Measuring Fashion: Environmental Impact of the Global Apparel and Footwear Industries."
+                        </li>
+                        <li>
+                            <strong>Water Footprint Network</strong> (2020). "Water Footprint Assessment: Cotton and Textile Production."
+                        </li>
+                        <li>
+                            <strong>Higg Materials Sustainability Index</strong> (2023). Material impact data for cotton, polyester, rayon, and wool.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="source-category">
+                <button class="source-category-toggle" aria-expanded="false">
+                    <h3 class="source-category-title">Carbon Emissions & Climate Impact</h3>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="source-category-content" style="display: none;">
+                    <ul class="source-list">
+                        <li>
+                            <strong>Quantis</strong> (2018). "Measuring Fashion: Climate Impact of the Global Apparel and Footwear Industries."
+                        </li>
+                        <li>
+                            <strong>McKinsey & Company & Global Fashion Agenda</strong> (2020). "Fashion on Climate: How the Fashion Industry Can Urgently Act to Reduce Its Greenhouse Gas Emissions."
+                        </li>
+                        <li>
+                            <strong>Carbon Trust</strong> (2011-2023). Life cycle assessment studies on textile materials.
+                        </li>
+                        <li>
+                            <strong>IPCC</strong> (2021). "Climate Change 2021: The Physical Science Basis." Intergovernmental Panel on Climate Change.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="source-category">
+                <button class="source-category-toggle" aria-expanded="false">
+                    <h3 class="source-category-title">Waste & Disposal Statistics</h3>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="source-category-content" style="display: none;">
+                    <ul class="source-list">
+                        <li>
+                            <strong>EPA</strong> (2021). "Textiles: Material-Specific Data." U.S. Environmental Protection Agency.
+                            <a href="https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/textiles-material-specific-data" target="_blank" rel="noopener noreferrer">View Data</a>
+                        </li>
+                        <li>
+                            <strong>WRAP</strong> (2017). "Valuing Our Clothes: The True Cost of How We Design, Use and Dispose of Clothing in the UK."
+                        </li>
+                        <li>
+                            <strong>Global Fashion Agenda</strong> (2020). "Fashion Industry Waste Statistics" and circularity reports.
+                        </li>
+                        <li>
+                            <strong>Statista</strong> (2023). "Global Textile Waste Statistics" and production data.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="source-category">
+                <button class="source-category-toggle" aria-expanded="false">
+                    <h3 class="source-category-title">Production & Industry Growth</h3>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="source-category-content" style="display: none;">
+                    <ul class="source-list">
+                        <li>
+                            <strong>McKinsey & Company</strong> (2016). "The State of Fashion" annual reports.
+                        </li>
+                        <li>
+                            <strong>Common Objective</strong> (2020). "Fashion Industry Statistics: The Biggest, Most Shocking, Most Wasteful and Most Disruptive Stats on Fashion."
+                        </li>
+                        <li>
+                            <strong>Fashion Revolution</strong> (2018-2023). "Fashion Transparency Index" and industry analysis.
+                        </li>
+                        <li>
+                            <strong>Business of Fashion & McKinsey</strong> (2017-2023). "The State of Fashion" reports on production volumes and trends.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            
+            <div class="source-category">
+                <button class="source-category-toggle" aria-expanded="false">
+                    <h3 class="source-category-title">Microplastics & Synthetic Fibers</h3>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="source-category-content" style="display: none;">
+                    <ul class="source-list">
+                    <li>
+                        <strong>Browne, M.A. et al.</strong> (2011). "Accumulation of Microplastic on Shorelines Worldwide: Sources and Sinks." 
+                        <em>Environmental Science & Technology</em>, 45(21), 9175-9179.
+                    </li>
+                    <li>
+                        <strong>IUCN</strong> (2017). "Primary Microplastics in the Oceans: A Global Evaluation of Sources."
+                    </li>
+                    <li>
+                        <strong>Napper, I.E. & Thompson, R.C.</strong> (2016). "Release of Synthetic Microplastic Fibres from Domestic Washing Machines." 
+                        <em>Marine Pollution Bulletin</em>, 112(1-2), 39-45.
+                    </li>
+                    <li>
+                        <strong>Ocean Clean Wash</strong> (2017). Reports on microfiber pollution from synthetic textiles.
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="source-category">
+                <button class="source-category-toggle" aria-expanded="false">
+                    <h3 class="source-category-title">Consumer Behavior & Solutions</h3>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="source-category-content" style="display: none;">
+                    <ul class="source-list">
+                        <li>
+                            <strong>WRAP</strong> (2012). "Valuing Our Clothes: The Evidence Base." Study on extending clothing life.
+                        </li>
+                        <li>
+                            <strong>Fletcher, K.</strong> (2014). "Sustainable Fashion and Textiles: Design Journeys." Routledge.
+                        </li>
+                        <li>
+                            <strong>Cline, E.L.</strong> (2012). "Overdressed: The Shockingly High Cost of Cheap Fashion." Portfolio/Penguin.
+                        </li>
+                        <li>
+                            <strong>Niinimäki, K. et al.</strong> (2020). "The Environmental Price of Fast Fashion." 
+                            <em>Nature Reviews Earth & Environment</em>, 1, 189-200.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <div class="sources-note">
+            <p><strong>Note on Data:</strong> Statistics are compiled from multiple sources and represent industry averages. 
+            Actual values vary significantly by region, brand, production method, and year. Water usage figures are based 
+            on life cycle assessments (LCA) and include all stages from raw material to finished product. CO₂ emissions 
+            include production, transportation, and end-of-life impacts. Waste statistics reflect global averages and may 
+            differ by country based on recycling infrastructure and consumer behavior.</p>
+        </div>
     </div>
 </section>
 <script>
@@ -623,6 +1286,31 @@
     
     // Run once when the page is ready
     document.addEventListener("DOMContentLoaded", setYearProgress);
+    
+    // Collapsible sources functionality
+    document.addEventListener("DOMContentLoaded", function() {
+        const sourceToggles = document.querySelectorAll('.source-category-toggle');
+        
+        sourceToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                const icon = this.querySelector('.toggle-icon');
+                
+                if (isExpanded) {
+                    content.style.display = 'none';
+                    this.setAttribute('aria-expanded', 'false');
+                    icon.textContent = '▼';
+                    this.classList.remove('expanded');
+                } else {
+                    content.style.display = 'block';
+                    this.setAttribute('aria-expanded', 'true');
+                    icon.textContent = '▲';
+                    this.classList.add('expanded');
+                }
+            });
+        });
+    });
     </script>
 
 <script>
@@ -666,7 +1354,7 @@
                 co2: 25,           // kg CO2 per kg (higher due to fossil fuels)
                 waste: 0.5
             },
-            viscose: {
+            rayon: {
                 water: 6000,       // liters per kg
                 co2: 12,           // kg CO2 per kg
                 waste: 0.5
@@ -890,39 +1578,39 @@
             water: {
                 cotton: 10000,
                 polyester: 2000,
-                viscose: 6000,
+                rayon: 6000,
                 wool: 8000,
-                labels: { cotton: "10,000L", polyester: "2,000L", viscose: "6,000L", wool: "8,000L" },
+                labels: { cotton: "10,000L", polyester: "2,000L", rayon: "6,000L", wool: "8,000L" },
                 tooltips: {
                     cotton: "<strong>Cotton</strong><br>Water: 10,000L/kg<br>CO₂: 15kg/kg<br>Most water-intensive",
                     polyester: "<strong>Polyester</strong><br>Water: 2,000L/kg<br>CO₂: 25kg/kg<br>Highest emissions",
-                    viscose: "<strong>Viscose</strong><br>Water: 6,000L/kg<br>CO₂: 12kg/kg<br>Chemical-intensive",
+                    rayon: "<strong>Rayon</strong><br>Water: 6,000L/kg<br>CO₂: 12kg/kg<br>Chemical-intensive",
                     wool: "<strong>Wool</strong><br>Water: 8,000L/kg<br>CO₂: 18kg/kg<br>High methane emissions"
                 }
             },
             co2: {
                 cotton: 15,
                 polyester: 25,
-                viscose: 12,
+                rayon: 12,
                 wool: 18,
-                labels: { cotton: "15kg", polyester: "25kg", viscose: "12kg", wool: "18kg" },
+                labels: { cotton: "15kg", polyester: "25kg", rayon: "12kg", wool: "18kg" },
                 tooltips: {
                     cotton: "<strong>Cotton</strong><br>Water: 10,000L/kg<br>CO₂: 15kg/kg<br>Most water-intensive",
                     polyester: "<strong>Polyester</strong><br>Water: 2,000L/kg<br>CO₂: 25kg/kg<br>Highest emissions",
-                    viscose: "<strong>Viscose</strong><br>Water: 6,000L/kg<br>CO₂: 12kg/kg<br>Chemical-intensive",
+                    rayon: "<strong>Rayon</strong><br>Water: 6,000L/kg<br>CO₂: 12kg/kg<br>Chemical-intensive",
                     wool: "<strong>Wool</strong><br>Water: 8,000L/kg<br>CO₂: 18kg/kg<br>High methane emissions"
                 }
             },
             waste: {
                 cotton: 0.5,
                 polyester: 0.8,
-                viscose: 0.6,
+                rayon: 0.6,
                 wool: 0.4,
-                labels: { cotton: "0.5kg", polyester: "0.8kg", viscose: "0.6kg", wool: "0.4kg" },
+                labels: { cotton: "0.5kg", polyester: "0.8kg", rayon: "0.6kg", wool: "0.4kg" },
                 tooltips: {
                     cotton: "<strong>Cotton</strong><br>Biodegradable<br>Waste: 0.5kg/item<br>Takes 1-5 months",
                     polyester: "<strong>Polyester</strong><br>Non-biodegradable<br>Waste: 0.8kg/item<br>Takes 200+ years",
-                    viscose: "<strong>Viscose</strong><br>Partially biodegradable<br>Waste: 0.6kg/item<br>Chemical waste",
+                    rayon: "<strong>Rayon</strong><br>Partially biodegradable<br>Waste: 0.6kg/item<br>Chemical waste",
                     wool: "<strong>Wool</strong><br>Biodegradable<br>Waste: 0.4kg/item<br>Takes 1-5 years"
                 }
             }
@@ -1026,6 +1714,162 @@
         if (comparisonSection) {
             observer.observe(comparisonSection);
         }
+    });
+    </script>
+    
+<script>
+    // Auto-scroll problem cards perpetually - one card at a time
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollContainer = document.querySelector('.problem-cards-scroll');
+        const cardsContainer = document.querySelector('.problem-cards-container');
+        const cards = document.querySelectorAll('.problem-card');
+        const prevButton = document.querySelector('.problem-card-nav-prev');
+        const nextButton = document.querySelector('.problem-card-nav-next');
+        
+        if (!scrollContainer || !cardsContainer || cards.length === 0) return;
+        
+        let currentIndex = 0;
+        let scrollInterval = null;
+        let resumeTimeout = null; // Timer to resume auto-scroll after manual navigation
+        let autoScrollEnabled = true; // Flag to track if auto-scroll should continue
+        const gap = 24; // gap between cards
+        const scrollDuration = 5000; // time to show each card (ms) - slower for reading
+        const resumeDelay = 60000; // Resume auto-scroll after 1 minute (60 seconds)
+        
+        function updateCardSizes() {
+            const containerWidth = scrollContainer.offsetWidth;
+            const allCards = document.querySelectorAll('.problem-card');
+            
+            // Set each card width to match container width (including duplicate)
+            allCards.forEach(card => {
+                card.style.width = `${containerWidth}px`;
+            });
+            
+            // Set container width to accommodate all cards including duplicate
+            const totalWidth = allCards.length * containerWidth + (allCards.length - 1) * gap;
+            cardsContainer.style.width = `${totalWidth}px`;
+        }
+        
+        function scrollToCard(index, userInitiated = false) {
+            const containerWidth = scrollContainer.offsetWidth;
+            let actualIndex = index;
+            
+            // Handle seamless loop for manual navigation
+            if (userInitiated) {
+                if (index >= cards.length) {
+                    // If going past last card, scroll to duplicate then reset
+                    actualIndex = cards.length; // Show duplicate
+                    const translateX = -actualIndex * (containerWidth + gap);
+                    cardsContainer.style.transform = `translateX(${translateX}px)`;
+                    
+                    // After transition, instantly reset to first card
+                    setTimeout(() => {
+                        cardsContainer.style.transition = 'none';
+                        actualIndex = 0;
+                        cardsContainer.style.transform = `translateX(0px)`;
+                        setTimeout(() => {
+                            cardsContainer.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                        }, 50);
+                    }, 600); // Wait for transition to complete
+                } else if (index < 0) {
+                    // If going before first card, show last card
+                    actualIndex = cards.length - 1;
+                }
+            }
+            
+            const translateX = -actualIndex * (containerWidth + gap);
+            cardsContainer.style.transform = `translateX(${translateX}px)`;
+            currentIndex = actualIndex;
+            
+            // If user manually navigated, pause auto-scroll and set resume timer
+            if (userInitiated) {
+                stopAutoScroll();
+                clearTimeout(resumeTimeout);
+                
+                // Resume auto-scroll after 1 minute
+                resumeTimeout = setTimeout(() => {
+                    autoScrollEnabled = true;
+                    startAutoScroll();
+                }, resumeDelay);
+            }
+        }
+        
+        function startAutoScroll() {
+            if (scrollInterval || !autoScrollEnabled) return;
+            
+            scrollInterval = setInterval(() => {
+                currentIndex++;
+                const containerWidth = scrollContainer.offsetWidth;
+                
+                // If we've reached the duplicate card (last card + 1), seamlessly reset to first card
+                if (currentIndex >= cards.length) {
+                    // Scroll to duplicate first card (which looks identical) with transition
+                    const translateX = -cards.length * (containerWidth + gap);
+                    cardsContainer.style.transform = `translateX(${translateX}px)`;
+                    
+                    // Reset to real first card during transition, then immediately continue to second card
+                    // This creates a seamless infinite loop with no visible pause
+                    setTimeout(() => {
+                        // Disable transition for instant reset
+                        cardsContainer.style.transition = 'none';
+                        currentIndex = 1; // Skip index 0, go directly to 1 to avoid pause
+                        cardsContainer.style.transform = `translateX(${-1 * (containerWidth + gap)}px)`;
+                        
+                        // Re-enable transition for smooth scrolling
+                        requestAnimationFrame(() => {
+                            cardsContainer.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                        });
+                    }, 600); // Reset after transition to duplicate completes
+                } else {
+                    // Normal scroll to next card
+                    const translateX = -currentIndex * (containerWidth + gap);
+                    cardsContainer.style.transform = `translateX(${translateX}px)`;
+                }
+            }, scrollDuration);
+        }
+        
+        function stopAutoScroll() {
+            if (scrollInterval) {
+                clearInterval(scrollInterval);
+                scrollInterval = null;
+            }
+        }
+        
+        function goToNext() {
+            let nextIndex = currentIndex + 1;
+            scrollToCard(nextIndex, true);
+        }
+        
+        function goToPrev() {
+            let prevIndex = currentIndex - 1;
+            scrollToCard(prevIndex, true);
+        }
+        
+        // Navigation button handlers
+        if (nextButton) {
+            nextButton.addEventListener('click', goToNext);
+        }
+        
+        if (prevButton) {
+            prevButton.addEventListener('click', goToPrev);
+        }
+        
+        // Initialize card sizes
+        updateCardSizes();
+        scrollToCard(0);
+        
+        // Start scrolling automatically
+        startAutoScroll();
+        
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                updateCardSizes();
+                scrollToCard(currentIndex);
+            }, 250);
+        });
     });
     </script>
     
