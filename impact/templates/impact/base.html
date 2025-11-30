@@ -6,6 +6,28 @@
     <meta charset="UTF-8">
     <title>{% block title %}Fighting Fast Fashion{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A data-driven exploration of fast fashion's environmental impact. Calculate your personal footprint, explore material impacts, and discover sustainable solutions.">
+    <meta name="keywords" content="fast fashion, environmental impact, sustainability, fashion industry, water usage, carbon footprint, textile waste">
+    <meta name="author" content="Fighting Fast Fashion">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}Fighting Fast Fashion - Environmental Impact Calculator{% endblock %}">
+    <meta property="og:description" content="A data-driven exploration of fast fashion's environmental impact. Calculate your personal footprint and explore sustainable solutions.">
+    <meta property="og:url" content="{% block og_url %}https://yourdomain.com{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'impact/imgs/clothes-on-rack.jpg' %}{% endblock %}">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Fighting Fast Fashion{% endblock %}">
+    <meta name="twitter:description" content="A data-driven exploration of fast fashion's environmental impact.">
+    <meta name="twitter:image" content="{% block twitter_image %}{% static 'impact/imgs/clothes-on-rack.jpg' %}{% endblock %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'impact/favicon.svg' %}">
+    <link rel="alternate icon" href="{% static 'impact/favicon.ico' %}">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{% static 'impact/styles.css' %}">
