@@ -1655,6 +1655,11 @@ body {
     overflow: hidden;
 }
 
+[data-theme="dark"] .live-water-bottle-track {
+    background: linear-gradient(135deg, #2d2d2d, #252525);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
 /* Filled portion of the track (acts like a progress bar) */
 .live-water-bottle-fill {
     height: 100%;
@@ -2284,11 +2289,12 @@ body {
 
 [data-theme="dark"] .btn.pill {
     background-color: var(--surface);
-    color: var(--accent);
+    color: var(--text-main);
 }
 
 [data-theme="dark"] .btn.pill:hover {
-    background-color: #3a3a3a;
+    background-color: var(--accent);
+    color: #ffffff;
 }
 
 [data-theme="dark"] .action-list li,
@@ -2357,7 +2363,7 @@ body {
 [data-theme="dark"] .chart-btn:hover {
     border-color: var(--accent-soft);
     background: var(--accent-soft);
-    color: var(--accent-dark);
+    color: #ffffff;
 }
 
 [data-theme="dark"] .chart-btn.active {
@@ -2432,11 +2438,11 @@ body {
 }
 
 [data-theme="dark"] .ethics-title {
-    color: var(--accent-soft);
+    color: #ffffff;
 }
 
 [data-theme="dark"] .ethics-text {
-    color: #e0e0e0;
+    color: #ffffff;
 }
 
 [data-theme="dark"] .solution-card {
@@ -2463,11 +2469,11 @@ body {
 }
 
 [data-theme="dark"] .solutions-impact-title {
-    color: var(--accent-soft);
+    color: #ffffff;
 }
 
 [data-theme="dark"] .solutions-impact-text {
-    color: #e0e0e0;
+    color: #ffffff;
 }
 
 [data-theme="dark"] .about-card,
