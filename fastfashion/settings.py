@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Serve static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -135,6 +136,15 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# WhiteNoise configuration for serving static files
+# Use CompressedStaticFilesStorage (simpler, no manifest required)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+# WhiteNoise settings - IMPORTANT for production
+WHITENOISE_USE_FINDERS = False  # Disable in production - only serve from STATIC_ROOT
+WHITENOISE_AUTOREFRESH = False  # Disable in production
+WHITENOISE_ROOT = STATIC_ROOT  # Explicitly set the root
 
 # ============================================================
 # MEDIA FILES
